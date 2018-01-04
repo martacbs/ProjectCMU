@@ -38,12 +38,13 @@ public class UserInterests extends AppCompatActivity {
 
         try {
             Interesses();
-            Intent j = new Intent(getApplicationContext(), Login.class);
-            startActivity(j);
 
         }catch (Exception e){
             e.printStackTrace();
         }
+        Intent j = new Intent(getApplicationContext(), Login.class);
+        startActivity(j);
+
 
     }
 });
