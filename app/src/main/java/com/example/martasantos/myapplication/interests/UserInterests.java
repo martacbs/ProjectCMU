@@ -45,7 +45,6 @@ public class UserInterests extends AppCompatActivity {
         Intent j = new Intent(getApplicationContext(), Login.class);
         startActivity(j);
 
-
     }
 });
     }
