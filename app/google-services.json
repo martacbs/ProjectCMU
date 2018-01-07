@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "56146978553",
+    "project_id": "projectcmu-191401"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:56146978553:android:77a5cc75f34e362f",
+        "android_client_info": {
+          "package_name": "com.example.martasantos.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "56146978553-8bpsnfqs2tbeddnf31d1fkl3r05fljn6.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "56146978553-qmpb69jfnulm92n03arj4fgd63beva3s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.martasantos.myapplication",
+            "certificate_hash": "8d43279cbe2c0eb6893a2ed232d94bb69c51ae90"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8Ueb4q0Bv9lWVXA_94EsU204UMjhvyBM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
