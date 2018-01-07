@@ -6,11 +6,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.martasantos.myapplication.MainActivity">
+<!--<LinearLayout
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:orientation="horizontal"
+    android:id="@+id/image_section"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="40dp">
 
+    <ImageView
+        android:id="@+id/xagenda"
+        android:layout_width="200dp"
 
+        android:layout_height="match_parent"
+        android:src="@drawable/xagenda"
+
+        />
+</LinearLayout>-->
 
     <Button
         android:id="@+id/bRegister"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
@@ -19,10 +35,21 @@
 
     <Button
         android:id="@+id/bLogin"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Register"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="137dp" />
+
+  <com.google.android.gms.common.SignInButton
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="60dp"
+      android:layout_marginRight="50dp"
+      android:layout_marginLeft="50dp"
+      android:id="@+id/bt_login">
+
+  </com.google.android.gms.common.SignInButton>
 
 </LinearLayout>
