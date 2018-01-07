@@ -9,9 +9,12 @@ import android.widget.Button;
 import com.example.martasantos.myapplication.login.Login;
 import com.example.martasantos.myapplication.register.UserRegister;
 
+
 public class MainActivity extends AppCompatActivity {
 
+
     Button register,login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(y);
             }
         });
+
     }
     }
 
