@@ -1,14 +1,17 @@
 package com.example.martasantos.myapplication.login;
 
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.martasantos.myapplication.R;
@@ -43,9 +46,13 @@ public class Login extends AppCompatActivity {
 
                 User user = verificarUser();
                     if (user != null) {
-                        Toast.makeText(Login.this, "Login suceful", Toast.LENGTH_LONG).show();
+
+                        ProcessData p= new ProcessData();
+                        p.execute(2000*10000);
+                        //Toast.makeText(Login.this, "Login suceful", Toast.LENGTH_LONG).show();
                         Intent d = new Intent(getApplicationContext(), Calendar.class);
                         startActivity(d);
+
                     }else{
                         Toast.makeText(Login.this, "Os dados introduzidos não são válidos", Toast.LENGTH_LONG).show();
                     }
@@ -79,8 +86,41 @@ public class Login extends AppCompatActivity {
         return user;
     }
 
+    public class ProcessData extends AsyncTask<Integer,String,String >{
+
+        private ProgressDialog mProgressBar;
+        @Override
+        protected String doInBackground(Integer... integers) {
+
+                try {
+                    Thread.sleep(1000);
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
 
 
 
+            return "done";
+        }
 
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+           // mProgressBar.dismiss();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            mProgressBar = new ProgressDialog(Login.this);
+            mProgressBar.setCancelable(false);// nao pode ser cancelada
+            mProgressBar.setTitle("loading...");
+            mProgressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            mProgressBar.show();
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+        }
+    }
 }
