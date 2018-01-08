@@ -20,7 +20,7 @@ import com.example.martasantos.myapplication.models.User;
 
 public class UserRegister extends AppCompatActivity {
 
-    EditText name, email,localidade, username, password,confirmarPassword,text1;
+    EditText name, email,localidade, username, password,confirmarPassword;
     Button registar,login;
 
     private void insertUser() throws Exception{

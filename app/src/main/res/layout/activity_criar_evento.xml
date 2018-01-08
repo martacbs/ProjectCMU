@@ -72,10 +72,10 @@
         tools:layout_editor_absoluteY="337dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonCriarEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Criar Evento"
         tools:layout_editor_absoluteX="116dp"
         tools:layout_editor_absoluteY="432dp" />
 </LinearLayout>

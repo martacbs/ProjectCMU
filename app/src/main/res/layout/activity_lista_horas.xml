@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:divider="#f00"
         android:dividerHeight="1dp"
-
         />
 
 </RelativeLayout>

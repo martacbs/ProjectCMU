@@ -72,8 +72,8 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
 
             @Override
             public void onClick(View view) {
-                //int position= getAdapterPosition();
-                //Contact contact=mContacts.get(position);
+               // int position=
+               // Horas contact=mHoras.get(position);
 
                 Intent myIntent = new Intent(mContext, CriarEvento.class);
                 mContext.startActivity(myIntent);
@@ -96,7 +96,7 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            nameTextView =(TextView) itemView.findViewById(R.id.contact_name);
+            nameTextView =(TextView) itemView.findViewById(R.id.horas);
             messageButton= (Button) itemView.findViewById(R.id.message_button);
 
 
