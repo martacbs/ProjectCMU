@@ -61,9 +61,11 @@ public class UserInterests extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put("interesses",valor);
         DbHelper dbHelper = new DbHelper(UserInterests.this);
+        Interesses inter = new Interesses(UserInterests.this);
+        SQLiteDatabase interr= inter.getWritableDatabase();
         SQLiteDatabase db= dbHelper.getWritableDatabase();
 
-        String util = "SELECT * FROM TABLE user WHERE id=?";
+        String util = "SELECT * FROM TABLE DbHelper WHERE id=?";
 
         values.put("user_id", util);
 
@@ -71,7 +73,7 @@ public class UserInterests extends AppCompatActivity {
 
 
 
-        long rowId = db.insert("interests", null, values);
+        long rowId = interr.insert("interests", null, values);
         Toast.makeText(
 
                 getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).
