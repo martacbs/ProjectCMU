@@ -48,7 +48,7 @@ public class Login extends AppCompatActivity {
                     if (user != null) {
 
                         ProcessData p= new ProcessData();
-                        p.execute(2000*10000);
+                        p.execute(null, null);
                         //Toast.makeText(Login.this, "Login suceful", Toast.LENGTH_LONG).show();
                         Intent d = new Intent(getApplicationContext(), Calendar.class);
                         startActivity(d);
@@ -93,7 +93,7 @@ public class Login extends AppCompatActivity {
         protected String doInBackground(Integer... integers) {
 
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(1000000);
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
@@ -113,7 +113,7 @@ public class Login extends AppCompatActivity {
         protected void onPreExecute() {
             mProgressBar = new ProgressDialog(Login.this);
             mProgressBar.setCancelable(false);// nao pode ser cancelada
-            mProgressBar.setTitle("loading...");
+            mProgressBar.setTitle("Iniciando sessão...");
             mProgressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             mProgressBar.show();
         }

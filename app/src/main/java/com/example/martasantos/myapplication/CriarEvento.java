@@ -13,20 +13,24 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.martasantos.myapplication.database.Events;
-import com.example.martasantos.myapplication.interests.UserInterests;
+
+import java.util.ArrayList;
 
 public class CriarEvento extends AppCompatActivity {
 
     Button criarEvento;
+    ArrayList<Events> eventos;
     EditText nomeEvento, localEvento, comeca, duracao;
    // private String [] lembrete  = new String[]{"1","2","3","4"};
     private Spinner sp;
 
 
     private void insertEvent() throws Exception{
+        ArrayList<Events> eventos = new ArrayList<Events>();
         Events events = new Events(CriarEvento.this);
-        SQLiteDatabase db= events.getWritableDatabase();
+        SQLiteDatabase db = events.getWritableDatabase();
         ContentValues values = new ContentValues();
+
 
         values.put("nomeEvento", nomeEvento.getText().toString());
         values.put("localEvento", localEvento.getText().toString());
@@ -43,7 +47,8 @@ public class CriarEvento extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_evento);
-
+        ArrayList<Events> eventos = new ArrayList<Events>(10);
+      //  ListAdapter adapter1 = new MyListItemAdapter(eventos, this);
         ArrayAdapter<String> adapter= new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 

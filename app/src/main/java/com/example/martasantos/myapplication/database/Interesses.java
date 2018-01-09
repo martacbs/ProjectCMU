@@ -4,9 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by martasantos on 01/01/18.
- */
 
 public class Interesses extends SQLiteOpenHelper {
 
@@ -20,9 +17,11 @@ public class Interesses extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE interests (id INTEGER PRIMARY KEY AUTOINCREMENT, interesses VARCHAR(100) NOT NULL)");
+        db.execSQL("CREATE TABLE interests (id INTEGER PRIMARY KEY AUTOINCREMENT, interesses VARCHAR(100) NOT NULL, user_id INTEGER)");
+
 
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
