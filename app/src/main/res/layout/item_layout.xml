@@ -19,7 +19,7 @@
         android:layout_weight="1"/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/eventos"
         android:layout_width="0dp"
         android:paddingLeft="6dp"
         android:layout_height="wrap_content"

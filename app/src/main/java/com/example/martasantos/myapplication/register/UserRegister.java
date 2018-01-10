@@ -57,19 +57,19 @@ public class UserRegister extends AppCompatActivity {
         registar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (name.length() == 0) {
+               /* if (name.length() == 0) {
                     Toast.makeText(UserRegister.this, "Insira o seu nome", Toast.LENGTH_LONG).show();
                 } else if (email.length() == 0) {
                     Toast.makeText(UserRegister.this, "Insira o seu e-mail", Toast.LENGTH_LONG).show();
-                } else if (localidade.length() == 0) {
-                    Toast.makeText(UserRegister.this, "Insira a localidade", Toast.LENGTH_LONG).show();
+                    // }else if (localidade.length() == 0) {
+                   // Toast.makeText(UserRegister.this, "Insira a localidade", Toast.LENGTH_LONG).show();
                 } else if (username.length() == 0) {
                     Toast.makeText(UserRegister.this, "Insira um username", Toast.LENGTH_LONG).show();
                 } else if (password.length() == 0) {
                     Toast.makeText(UserRegister.this, "Insira uma password", Toast.LENGTH_LONG).show();
                 } else if (confirmarPassword.length() == 0) {
                     Toast.makeText(UserRegister.this, "Tem que confirmar a password", Toast.LENGTH_LONG).show();
-                }else if (password.getText().toString().equals(confirmarPassword.getText().toString())) {
+                }else */if (password.getText().toString().equals(confirmarPassword.getText().toString())) {
                     try {
                        if(!verificarEmail()){
                            if(!verificarUsername()){

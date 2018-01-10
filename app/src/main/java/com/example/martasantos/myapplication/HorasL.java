@@ -1,9 +1,12 @@
 package com.example.martasantos.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
+
 import com.example.martasantos.myapplication.adapter.HorasAdapter;
 import com.example.martasantos.myapplication.models.Horas;
 
@@ -32,6 +35,22 @@ public class HorasL extends AppCompatActivity {
 
         rvHoras.setLayoutManager(new LinearLayoutManager(
                 this));
+/*
+        Intent intent=getIntent();
+
+        if(intent!=null){
+            Bundle params = intent.getExtras();
+            if(params!=null){
+                String nomeEvento=params.getString("nomeEvento");
+                TextView nomeView=(TextView)findViewById(R.id.eventos);
+
+                nomeView.setText(nomeEvento);
+            }
+        }
+
+*/
+
+
 
     }
 
@@ -40,6 +59,7 @@ public class HorasL extends AppCompatActivity {
         for(int i=0;i<x;i++){
             Horas h =null;
             String hora=  i + ":00" ;
+
             if(i< x){
                 h =new Horas (hora);
             }else{

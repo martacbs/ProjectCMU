@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +22,7 @@ public class CriarEvento extends AppCompatActivity {
     Button criarEvento;
     ArrayList<Events> eventos;
     EditText nomeEvento, localEvento, comeca, duracao;
-   // private String [] lembrete  = new String[]{"1","2","3","4"};
+    private String [] lembrete  = new String[]{"1","2","3","4"};
     private Spinner sp;
 
 
@@ -36,7 +37,7 @@ public class CriarEvento extends AppCompatActivity {
         values.put("localEvento", localEvento.getText().toString());
         values.put("comeca", comeca.getText().toString());
         values.put("duracao", duracao.getText().toString());
-
+        values.put("lembrete",sp.getSelectedItem().toString());
         long rowId = db.insert("events", null, values);
         if (rowId < 0) {
             throw new Exception("Erro aqui");
@@ -48,17 +49,29 @@ public class CriarEvento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_evento);
         ArrayList<Events> eventos = new ArrayList<Events>(10);
-      //  ListAdapter adapter1 = new MyListItemAdapter(eventos, this);
-        ArrayAdapter<String> adapter= new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         sp=(Spinner)findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter= new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item,lembrete );
+       // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp.setAdapter(adapter);
+
+        //sp.setAdapter(adapter);
 
         nomeEvento=(EditText)findViewById(R.id.nomeEvento);
         localEvento=(EditText)findViewById(R.id.localEvento);
         comeca=(EditText)findViewById(R.id.comeca);
         duracao=(EditText)findViewById(R.id.duracao);
+
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         criarEvento=(Button)findViewById(R.id.buttonCriarEvento);
         criarEvento.setOnClickListener(new View.OnClickListener() {

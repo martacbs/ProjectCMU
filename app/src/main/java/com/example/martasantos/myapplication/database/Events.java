@@ -20,7 +20,7 @@ public class Events extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE events (id INTEGER PRIMARY KEY AUTOINCREMENT, nomeEvento VARCHAR(50) NOT NULL, localEvento VARCHAR(50) NOT NULL, comeca VARCHAR(50) NOT NULL, duracao VARCHAR(50) NOT NULL)");
+        db.execSQL("CREATE TABLE events (id INTEGER PRIMARY KEY AUTOINCREMENT, nomeEvento VARCHAR(50) NOT NULL, localEvento VARCHAR(50) NOT NULL, comeca VARCHAR(50) NOT NULL, duracao VARCHAR(50) NOT NULL, lembrete VARCHAR(50) NOT NULL)");
     }
 
     @Override

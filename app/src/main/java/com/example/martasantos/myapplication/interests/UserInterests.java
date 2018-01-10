@@ -40,13 +40,13 @@ public class UserInterests extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                int x;
+
                 try {
-                    x = 0;
+                    
                     Interesses();
 
                 } catch (Exception e) {
-                    x = 1;
+
                     e.printStackTrace();
                 }
                 Intent j = new Intent(getApplicationContext(), Login.class);
@@ -67,11 +67,11 @@ public class UserInterests extends AppCompatActivity {
 
         String util = "SELECT * FROM TABLE DbHelper WHERE id=?";
 
+        //Cursor cursor = db.rawQuery(util, new String[]{String.valueOf(util.getId())});
+
         values.put("user_id", util);
 
         Interesses interess = new Interesses(UserInterests.this);
-
-
 
         long rowId = interr.insert("interests", null, values);
         Toast.makeText(
