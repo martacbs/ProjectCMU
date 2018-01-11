@@ -23,7 +23,7 @@ public class UserRegister extends AppCompatActivity {
     EditText name, email,localidade, username, password,confirmarPassword;
     Button registar,login;
 
-    private void insertUser() throws Exception{
+    private long insertUser() throws Exception{
         DbHelper dbHelper = new DbHelper(UserRegister.this);
         SQLiteDatabase db= dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -38,6 +38,8 @@ public class UserRegister extends AppCompatActivity {
         if (rowId < 0) {
             throw new Exception("Erro aqui");
         }
+
+        return rowId;
     }
 
     @Override
@@ -73,9 +75,13 @@ public class UserRegister extends AppCompatActivity {
                     try {
                        if(!verificarEmail()){
                            if(!verificarUsername()){
-                        insertUser();
+                        long userid = insertUser();
                             Toast.makeText(getApplicationContext(), "register sucessful", Toast.LENGTH_SHORT).show();
                             Intent d = new Intent(getApplicationContext(), UserInterests.class);
+                            //enviar o id para os interesses
+                            Bundle b = new Bundle();
+                            b.putLong("user_id",userid);
+                            d.putExtras(b);
                             startActivity(d);
                          }else{
                             Toast.makeText(getApplicationContext(), "O username já existe", Toast.LENGTH_SHORT).show();

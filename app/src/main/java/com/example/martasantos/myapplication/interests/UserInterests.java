@@ -6,28 +6,25 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
-
-import com.example.martasantos.myapplication.R;
 import com.example.martasantos.myapplication.calendar.Calendar;
+import com.example.martasantos.myapplication.R;
 import com.example.martasantos.myapplication.database.DbHelper;
-import com.example.martasantos.myapplication.database.Interesses;
 import com.example.martasantos.myapplication.login.Login;
 import com.example.martasantos.myapplication.models.User;
-import com.example.martasantos.myapplication.register.UserRegister;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class UserInterests extends AppCompatActivity {
 
     CheckBox tecnologia, desporto, moda, musica, escrita, cinema, gastronomia;
     Button submeter;
-
+    //fazer o metodo como se fez para os interesses ir buscar o id de util GoogleSignInResult result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,57 +39,61 @@ public class UserInterests extends AppCompatActivity {
             public void onClick(View v) {
 
                 try {
-                    
                     Interesses();
-
                 } catch (Exception e) {
-
                     e.printStackTrace();
                 }
-                Intent j = new Intent(getApplicationContext(), Login.class);
-                startActivity(j);
 
+                Long id_google=getIntent().getLongExtra("user_id_google",-1);
+                if(id_google>0){
+                    Intent h = new Intent(getApplicationContext(), Calendar.class);
+                    startActivity(h);
+                }else {
+                    Intent j = new Intent(getApplicationContext(), Login.class);
+                    startActivity(j);
+                }
             }
         });
     }
 
-    private void insertInteresse(String valor) throws Exception {
+    private void insertInteresse( String valor) throws Exception {
 
         ContentValues values = new ContentValues();
         values.put("interesses",valor);
+
         DbHelper dbHelper = new DbHelper(UserInterests.this);
-        Interesses inter = new Interesses(UserInterests.this);
-        SQLiteDatabase interr= inter.getWritableDatabase();
         SQLiteDatabase db= dbHelper.getWritableDatabase();
 
-        String util = "SELECT * FROM TABLE DbHelper WHERE id=?";
+        // recebe o id que vem do registo de utilizador registo normal
+        Long id=getIntent().getLongExtra("user_id",-1);
 
-        //Cursor cursor = db.rawQuery(util, new String[]{String.valueOf(util.getId())});
+        if(id>0) {
+            values.put("user_id", id);
+            long rowId = db.insert("interests", null, values);
+            Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
+            if (rowId < 0) {
+                throw new Exception("Não foi possível guardar os seus interesses!");
+            }
+        }
 
-        values.put("user_id", util);
+        // recebe o id que vem do registo de utilizador registo conta google
+        Long id_google=getIntent().getLongExtra("user_id_google",-1);
+        if(id_google>0) {
 
-        Interesses interess = new Interesses(UserInterests.this);
+            values.put("user_id", id_google);
+            long rowId = db.insert("interests", null, values);
+            Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
 
-        long rowId = interr.insert("interests", null, values);
-        Toast.makeText(
-
-                getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).
-
-                show();
-        if (rowId < 0)
-
-        {
-
-            throw new Exception("Erro aqui");
+            if (rowId < 0) {
+                throw new Exception("Não foi possível guardar os seus interesses!");
+            }
         }
 
 
-        db.close();
-
+            db.close();
     }
 
     public void Interesses() throws Exception {
-
 
         List<String> interesses = new ArrayList<>();
 
@@ -103,7 +104,6 @@ public class UserInterests extends AppCompatActivity {
         CheckBox escrita = (CheckBox) findViewById(R.id.escrita);
         CheckBox cinema = (CheckBox) findViewById(R.id.cinema);
         CheckBox gastronomia = (CheckBox) findViewById(R.id.gastronomia);
-
 
         if (tecnologia.isChecked()) {
             interesses.add("Tecnologia");
@@ -134,12 +134,13 @@ public class UserInterests extends AppCompatActivity {
         }
     }
 
-    public List<Interesses> AdicInt(User user){
-        ArrayList<Interesses> intere = new ArrayList<Interesses>(10);
-        Interesses inter = new Interesses(UserInterests.this);
-        SQLiteDatabase db= inter.getWritableDatabase();
+    public List<DbHelper> AdicInt(User user){
+        ArrayList<DbHelper> intere = new ArrayList<DbHelper>(10);
+        DbHelper dbHelper = new DbHelper(UserInterests.this);
 
-        String SQL = "SELECT * FROM TABLE Interesses WHERE user_id=?";
+        SQLiteDatabase db= dbHelper.getWritableDatabase();
+
+        String SQL = "SELECT * FROM TABLE interests WHERE user_id=?";
         Cursor cursor = db.rawQuery(SQL, new String[]{String.valueOf(user.getId())});
 
         while(cursor.moveToNext()){

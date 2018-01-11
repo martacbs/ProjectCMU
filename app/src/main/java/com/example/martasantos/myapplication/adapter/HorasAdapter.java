@@ -61,8 +61,12 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
     public void onBindViewHolder(HorasAdapter.ViewHolder viewHolder, int position){
         final Horas hora = mHoras.get(position);
 
+
+
+
         TextView textView=viewHolder.nameTextView;
         textView.setText(hora.getHora());
+
 
         Button button =viewHolder.messageButton;
         button.setText( "+" );
@@ -89,7 +93,7 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView nameTextView;
+        public TextView nameTextView, nameEvent;
         public Button messageButton;
 
 
@@ -98,6 +102,8 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
 
             nameTextView =(TextView) itemView.findViewById(R.id.horas);
             messageButton= (Button) itemView.findViewById(R.id.message_button);
+            nameEvent=(TextView)itemView.findViewById(R.id.eventos);
+
 
 
         }

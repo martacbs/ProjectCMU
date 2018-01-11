@@ -13,22 +13,22 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.martasantos.myapplication.database.Events;
+import com.example.martasantos.myapplication.database.DbHelper;
 
 import java.util.ArrayList;
 
 public class CriarEvento extends AppCompatActivity {
 
     Button criarEvento;
-    ArrayList<Events> eventos;
+    ArrayList<DbHelper> eventos;
     EditText nomeEvento, localEvento, comeca, duracao;
     private String [] lembrete  = new String[]{"1","2","3","4"};
     private Spinner sp;
 
 
     private void insertEvent() throws Exception{
-        ArrayList<Events> eventos = new ArrayList<Events>();
-        Events events = new Events(CriarEvento.this);
+        ArrayList<DbHelper> eventos = new ArrayList<DbHelper>();
+        DbHelper events = new DbHelper(CriarEvento.this);
         SQLiteDatabase db = events.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -48,7 +48,7 @@ public class CriarEvento extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_evento);
-        ArrayList<Events> eventos = new ArrayList<Events>(10);
+        ArrayList<DbHelper> eventos = new ArrayList<DbHelper>(10);
         sp=(Spinner)findViewById(R.id.spinner);
         ArrayAdapter<String> adapter= new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item,lembrete );
        // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -60,6 +60,7 @@ public class CriarEvento extends AppCompatActivity {
         localEvento=(EditText)findViewById(R.id.localEvento);
         comeca=(EditText)findViewById(R.id.comeca);
         duracao=(EditText)findViewById(R.id.duracao);
+
 
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -80,7 +81,12 @@ public class CriarEvento extends AppCompatActivity {
                 try {
                     insertEvent();
                     Intent d = new Intent(getApplicationContext(), HorasL.class);
+                    Bundle b = new Bundle();
+                    b.putString("nomeEvento",nomeEvento.toString());
+                    d.putExtras(b);
                     startActivity(d);
+
+
                     Toast.makeText(getApplicationContext(), "Evento Criado com sucesso", Toast.LENGTH_SHORT).show();
                 }catch (Exception e ){
                     e.printStackTrace();

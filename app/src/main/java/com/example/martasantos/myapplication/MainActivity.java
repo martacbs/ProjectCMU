@@ -1,7 +1,5 @@
 package com.example.martasantos.myapplication;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,13 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.martasantos.myapplication.database.DbHelper;
-import com.example.martasantos.myapplication.database.Interesses;
 import com.example.martasantos.myapplication.interests.UserInterests;
 import com.example.martasantos.myapplication.login.Login;
 import com.example.martasantos.myapplication.register.UserRegister;
@@ -103,46 +97,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             SQLiteDatabase db= dbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
 
-
-
             values.put("name", account.getDisplayName().toString());
             values.put("email", account.getEmail().toString());
 
-
-            long rowId = db.insert("user", null, values);
-            if (rowId < 0) {
-                throw new Exception("Erro aqui");
+            long id_countGoogle = db.insert("user", null, values);
+            if (id_countGoogle < 0) {
+                throw new Exception("Não é possível registar o utilizador com o login da google");
             }
 
-          //  String name = account.getDisplayName();
-       //     String email = account.getEmail();
-
-           // Name.setText(name);
-            //Email.setText(name);
-
-         //   String img_url = X_Agenda.toString();
-         //   Glide.with(this).load(img_url).into(X_Agenda);
-
-            updateUI(true);
+            updateUI(true, id_countGoogle);
         }
         else{
-           updateUI(false);
+
+            updateUI(false, 0);
         }
 
     }
-    private void updateUI(boolean isLogin){
+    private void updateUI(boolean isLogin, long id_google){
 
         if (isLogin){
-           //por imagem_util visivel
-
 
             Toast.makeText(getApplicationContext(), "Login with google sucessful", Toast.LENGTH_SHORT).show();
             Intent z = new Intent(getApplicationContext(), UserInterests.class);
+            Bundle b = new Bundle();
+            b.putLong("user_id_google",id_google);
+
+            z.putExtras(b);
             startActivity(z);
         }
 
         else {
-            //por imagem_util gone
+
             SignIn.setVisibility(View.VISIBLE);
         }
 
@@ -160,5 +145,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
+
 }
 

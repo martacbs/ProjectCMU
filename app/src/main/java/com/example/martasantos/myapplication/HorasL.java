@@ -27,7 +27,7 @@ public class HorasL extends AppCompatActivity {
 
         RecyclerView rvHoras =(RecyclerView) findViewById(R.id.rvHoras);
 
-        horas = createContactList(24);
+        horas = createHorasList(24);
 
         HorasAdapter adapter = new HorasAdapter(this, horas);
 
@@ -35,35 +35,18 @@ public class HorasL extends AppCompatActivity {
 
         rvHoras.setLayoutManager(new LinearLayoutManager(
                 this));
-/*
-        Intent intent=getIntent();
-
-        if(intent!=null){
-            Bundle params = intent.getExtras();
-            if(params!=null){
-                String nomeEvento=params.getString("nomeEvento");
-                TextView nomeView=(TextView)findViewById(R.id.eventos);
-
-                nomeView.setText(nomeEvento);
-            }
-        }
-
-*/
 
 
 
     }
 
-    private ArrayList<Horas> createContactList (int x){
+    private ArrayList<Horas> createHorasList (int x){
         ArrayList<Horas> horas = new ArrayList<>(x);
         for(int i=0;i<x;i++){
             Horas h =null;
             String hora=  i + ":00" ;
-
-            if(i< x){
+            if(i<=x){
                 h =new Horas (hora);
-            }else{
-                h=new Horas(hora);
             }
             horas.add(h);
         }
