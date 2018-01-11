@@ -1,6 +1,10 @@
 package com.example.martasantos.myapplication;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.martasantos.myapplication.database.DbHelper;
 import com.example.martasantos.myapplication.database.Interesses;
 import com.example.martasantos.myapplication.interests.UserInterests;
 import com.example.martasantos.myapplication.login.Login;
@@ -66,8 +71,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //Image_Section = (LinearLayout)findViewById(R.id.image_section);
 
-
-
     }
 
     @Override
@@ -91,19 +94,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivityForResult(intent, REQ_CODE);
 
     }
-    private void handleResult(GoogleSignInResult result){
+    private void handleResult(GoogleSignInResult result) throws Exception {
 
         if (result.isSuccess()){
             GoogleSignInAccount account = result.getSignInAccount();
+
+            DbHelper dbHelper = new DbHelper(MainActivity.this);
+            SQLiteDatabase db= dbHelper.getWritableDatabase();
+            ContentValues values = new ContentValues();
+
+
+
+            values.put("name", account.getDisplayName().toString());
+            values.put("email", account.getEmail().toString());
+
+
+            long rowId = db.insert("user", null, values);
+            if (rowId < 0) {
+                throw new Exception("Erro aqui");
+            }
+
           //  String name = account.getDisplayName();
        //     String email = account.getEmail();
-          //  String img_url = account.getPhotoUrl().toString();
+
            // Name.setText(name);
             //Email.setText(name);
-           // Glide.with(this).load(img_url).into(imagem_util);
+
          //   String img_url = X_Agenda.toString();
          //   Glide.with(this).load(img_url).into(X_Agenda);
-          //  Image_Section.setVisibility(View.VISIBLE);
+
             updateUI(true);
         }
         else{
@@ -134,7 +153,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==REQ_CODE){
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            handleResult(result);
+            try {
+                handleResult(result);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
