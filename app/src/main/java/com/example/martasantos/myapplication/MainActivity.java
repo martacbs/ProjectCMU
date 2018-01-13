@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView textView;
     CallbackManager callbackManager;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent x= new Intent(getApplicationContext(),UserRegister.class);
                 startActivity(x);
             }
@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 Intent y=new Intent(getApplicationContext(),Login.class);
                 startActivity(y);
-
             }
         });
 
@@ -78,10 +77,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Facebook
         FacebookSdk.sdkInitialize(getApplicationContext());
-        setContentView(R.layout.activity_main);
+
         loginButton =(LoginButton)findViewById(R.id.login_button);
         textView = (TextView)findViewById(R.id.textView);
         callbackManager = CallbackManager.Factory.create();
+
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -102,11 +102,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
-
-
 //Image_Section = (LinearLayout)findViewById(R.id.image_section);
 
     }
+
+
+
 
     //Google
     @Override

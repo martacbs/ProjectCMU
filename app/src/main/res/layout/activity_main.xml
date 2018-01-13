@@ -29,7 +29,7 @@
         android:id="@+id/imageView"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/xagenda"
         android:layout_margin="60dp"
         android:layout_marginRight="20dp"/>
 
