@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private GoogleApiClient googleApiClient;
     private static final int REQ_CODE = 9001;
    // private ImageView X_Agenda;
+
+    //facebook
     LoginButton loginButton;
     TextView textView;
     CallbackManager callbackManager;
@@ -73,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleApiClient =  new GoogleApiClient.Builder(this).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions).build();
 
+
+        //Facebook
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
         loginButton =(LoginButton)findViewById(R.id.login_button);
@@ -103,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    //Google
     @Override
     public void onClick(View v) {
 
@@ -171,7 +176,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //face
         callbackManager.onActivityResult(requestCode, resultCode, data);
+        //google
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==REQ_CODE){
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
