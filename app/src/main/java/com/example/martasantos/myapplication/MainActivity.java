@@ -8,12 +8,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.martasantos.myapplication.database.DbHelper;
 import com.example.martasantos.myapplication.interests.UserInterests;
 import com.example.martasantos.myapplication.login.Login;
 import com.example.martasantos.myapplication.register.UserRegister;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -31,6 +38,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private GoogleApiClient googleApiClient;
     private static final int REQ_CODE = 9001;
    // private ImageView X_Agenda;
+    LoginButton loginButton;
+    TextView textView;
+    CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +72,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SignIn.setOnClickListener(this);
         GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleApiClient =  new GoogleApiClient.Builder(this).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions).build();
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        setContentView(R.layout.activity_main);
+        loginButton =(LoginButton)findViewById(R.id.login_button);
+        textView = (TextView)findViewById(R.id.textView);
+        callbackManager = CallbackManager.Factory.create();
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                textView.setText("Login Sucess \n" +
+                        loginResult.getAccessToken().getUserId()+ "\n"+loginResult.getAccessToken());
+
+            }
+
+            @Override
+            public void onCancel() {
+
+                textView.setText("Login Cancelled");
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+
 
 //Image_Section = (LinearLayout)findViewById(R.id.image_section);
 
@@ -135,6 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==REQ_CODE){
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
