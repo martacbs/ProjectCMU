@@ -85,9 +85,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                textView.setText("Login Sucess \n" +
-                        loginResult.getAccessToken().getUserId()+ "\n"+loginResult.getAccessToken());
-
+                textView.setText("Login Sucess \n" + loginResult.getAccessToken().getUserId()+ "\n"+loginResult.getAccessToken());
+                Intent q = new Intent(getApplicationContext(), UserInterests.class);
+                startActivity(q);
             }
 
             @Override
