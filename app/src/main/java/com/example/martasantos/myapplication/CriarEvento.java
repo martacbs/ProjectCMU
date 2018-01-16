@@ -82,7 +82,7 @@ public class CriarEvento extends AppCompatActivity {
                     insertEvent();
                     Intent d = new Intent(getApplicationContext(), HorasL.class);
                     Bundle b = new Bundle();
-                    b.putString("nomeEvento",nomeEvento.toString());
+                    b.putString("nomeEvento",nomeEvento.getText().toString());
                     d.putExtras(b);
                     startActivity(d);
 
