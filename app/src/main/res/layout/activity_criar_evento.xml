@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="datetime"
         android:hint="Começa"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="188dp" />
@@ -78,4 +78,5 @@
         android:text="Criar Evento"
         tools:layout_editor_absoluteX="116dp"
         tools:layout_editor_absoluteY="432dp" />
+
 </LinearLayout>

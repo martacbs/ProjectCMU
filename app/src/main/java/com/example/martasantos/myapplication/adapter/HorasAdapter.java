@@ -2,6 +2,7 @@ package com.example.martasantos.myapplication.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,9 @@ import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.martasantos.myapplication.CriarEvento;
+import com.example.martasantos.myapplication.HorasL;
 import com.example.martasantos.myapplication.R;
+import com.example.martasantos.myapplication.models.Evento;
 import com.example.martasantos.myapplication.models.Horas;
 
 import java.util.List;
@@ -23,11 +26,28 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
 
     private Context mContext;
     private List<Horas> mHoras;
+    private String nomeEve;
+    private List<Evento> eventos;
+
+    public String getNomeEve() {
+        return nomeEve;
+    }
+
+    public void setNomeEve(String nomeEve) {
+        this.nomeEve = nomeEve;
+    }
 
     public HorasAdapter(Context mContext, List<Horas> mContacts) {
         this.mContext = mContext;
         this.mHoras = mContacts;
     }
+
+    public HorasAdapter(Context mContext, List<Horas> mContacts, List<Evento> eventos) {
+        this.mContext = mContext;
+        this.mHoras = mContacts;
+        this.eventos = eventos;
+    }
+
 
     public Context getmContext() {
         return mContext;
@@ -46,38 +66,35 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        Context context= parent.getContext();
-        LayoutInflater inflater= LayoutInflater.from(context);
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Context context = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
 
-        View contactView = inflater.inflate(R.layout.item_layout,parent,false);
+        View contactView = inflater.inflate(R.layout.item_layout, parent, false);
 
-        ViewHolder viewHolder =new ViewHolder(contactView);
+        ViewHolder viewHolder = new ViewHolder(contactView);
         return viewHolder;
 
     }
 
     @Override
-    public void onBindViewHolder(HorasAdapter.ViewHolder viewHolder, int position){
+    public void onBindViewHolder(HorasAdapter.ViewHolder viewHolder, int position) {
         final Horas hora = mHoras.get(position);
-
-
-
-
-        TextView textView=viewHolder.nameTextView;
+        final Evento nomeeventos = eventos.get(position);
+        TextView textView = viewHolder.nameTextView;
         textView.setText(hora.getHora());
+        TextView textView1 = viewHolder.nameEvent;
+        textView1.setText((CharSequence) nomeeventos.getNome());
+        Button button = viewHolder.messageButton;
+        button.setText("+");
 
 
-        Button button =viewHolder.messageButton;
-        button.setText( "+" );
-
-
-        button.setOnClickListener(new View.OnClickListener(){
+        button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-               // int position=
-               // Horas contact=mHoras.get(position);
+                // int position=
+                // Horas contact=mHoras.get(position);
 
                 Intent myIntent = new Intent(mContext, CriarEvento.class);
                 mContext.startActivity(myIntent);
@@ -91,7 +108,7 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
         return mHoras.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView nameTextView, nameEvent;
         public Button messageButton;
@@ -100,10 +117,9 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            nameTextView =(TextView) itemView.findViewById(R.id.horas);
-            messageButton= (Button) itemView.findViewById(R.id.message_button);
-            nameEvent=(TextView)itemView.findViewById(R.id.eventos);
-
+            nameTextView = (TextView) itemView.findViewById(R.id.horas);
+            messageButton = (Button) itemView.findViewById(R.id.message_button);
+            nameEvent = (TextView) itemView.findViewById(R.id.eventos);
 
 
         }
