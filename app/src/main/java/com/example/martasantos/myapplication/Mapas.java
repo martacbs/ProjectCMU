@@ -3,7 +3,7 @@ package com.example.martasantos.myapplication;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-/*
+
 import com.example.martasantos.myapplication.retrofit.POI;
 import com.example.martasantos.myapplication.retrofit.TourDataApi;
 import com.google.android.gms.maps.CameraUpdate;
@@ -31,15 +31,20 @@ public class Mapas extends AppCompatActivity implements OnMapReadyCallback{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
+        mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mMapFragment.getMapAsync(this);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
 
-        zoomToLocation();
-        addMarker();
+
+       // zoomToLocation();
+        //addMarker();
         //
+
+        zoomToLocationLondon();
         getApi().getListPointsOfInterest("London", "attraction", "Science")
                 .enqueue(new Callback<List<POI>>(){
                     @Override
@@ -76,9 +81,9 @@ public class Mapas extends AppCompatActivity implements OnMapReadyCallback{
             }
         });
 
-    }
+    }/*
     private void addMarker(){
-        LatLng latLng=new LatLng(41.3668491,-8.1947272);
+        LatLng latLng=new LatLng(47.3668491,-8.1947272);
 
         Marker marker=mGoogleMap.addMarker(new MarkerOptions()
                 .position(latLng)
@@ -93,10 +98,10 @@ public class Mapas extends AppCompatActivity implements OnMapReadyCallback{
             }
         });
 
-    }
+    }*/
 
     private void zoomToLocationLondon(){
-        LatLng latLng=new LatLng(51.5281612,-0.6620091);
+        LatLng latLng=new LatLng(51.496715,-0.1757499);
 
         CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latLng,18);
 
@@ -107,7 +112,7 @@ public class Mapas extends AppCompatActivity implements OnMapReadyCallback{
 
 
     private void zoomToLocation(){
-        LatLng latLng=new LatLng(41.3668491,-8.1947272);
+        LatLng latLng=new LatLng(0,-0);
 
         CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latLng,18);
 
@@ -127,4 +132,4 @@ public class Mapas extends AppCompatActivity implements OnMapReadyCallback{
         return getRetrofit().create(TourDataApi.class);
     }
 }
-*/
+

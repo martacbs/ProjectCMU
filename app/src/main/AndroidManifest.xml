@@ -29,6 +29,7 @@
         <activity android:name=".login.Login" />
         <activity android:name=".register.UserRegister" />
         <activity android:name=".CriarEvento" />
+        <activity android:name=".Mapas" />
         <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
         <activity android:name="com.facebook.FacebookActivity"
