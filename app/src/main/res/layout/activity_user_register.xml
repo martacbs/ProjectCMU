@@ -11,6 +11,9 @@
         android:id="@+id/insertNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
         android:hint="Nome"
         android:inputType="textPersonName" />
@@ -19,6 +22,9 @@
         android:id="@+id/insertEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName" />
@@ -27,6 +33,9 @@
         android:id="@+id/insertLocalidade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
         android:hint="Localidade"
         android:inputType="textPersonName" />
@@ -35,6 +44,9 @@
         android:id="@+id/insertUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName" />
@@ -43,6 +55,9 @@
         android:id="@+id/insertPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword" />
@@ -51,6 +66,9 @@
         android:id="@+id/insertConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
         android:hint="Confirmar Password"
         android:inputType="textPassword" />
@@ -60,16 +78,17 @@
         android:id="@+id/button_guardarRegisto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:textColor="#000000"
-        android:textSize="18sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="16dp"
         android:clickable="true"
         android:padding="16dp"
+        android:text="Register"
         android:textAllCaps="false"
-        />
+        android:textColor="#000000"
+        android:textSize="18sp" />
 
-    <Button
+  <!--  <Button
         android:id="@+id/button_Login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -80,6 +99,6 @@
         android:clickable="true"
         android:padding="16dp"
         android:textAllCaps="false"
-        />
+        />-->
 
 </LinearLayout>

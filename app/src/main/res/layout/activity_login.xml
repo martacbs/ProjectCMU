@@ -11,6 +11,9 @@
         android:id="@+id/insertUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName" />
@@ -19,6 +22,8 @@
         android:id="@+id/insertPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword" />
@@ -27,6 +32,8 @@
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="Login"
         android:textSize="18sp"
         android:layout_marginTop="16dp"

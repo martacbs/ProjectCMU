@@ -12,6 +12,9 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="20dp"
         android:text="CRIAR EVENTO"
         tools:layout_editor_absoluteX="162dp"
         tools:layout_editor_absoluteY="222dp" />
@@ -20,6 +23,8 @@
         android:id="@+id/nomeEvento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Nome"
@@ -30,18 +35,32 @@
         android:id="@+id/localEvento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Local"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="127dp" />
 
+    <EditText
+        android:id="@+id/dataEvento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="DataEvento"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="127dp" />
 
     <EditText
         android:id="@+id/comeca"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:hint="Selecione a hora"
 
         android:ems="10"
@@ -56,6 +75,8 @@
         android:id="@+id/duracao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Duração"
@@ -66,22 +87,30 @@
         android:id="@+id/lembrete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
         android:text="Lembrete"
         tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="337dp" />
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="92dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
         tools:layout_editor_absoluteX="130dp"
         tools:layout_editor_absoluteY="337dp" />
 
     <Button
         android:id="@+id/buttonCriarEvento"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:padding="16dp"
         android:text="Criar Evento"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="432dp" />
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="18sp" />
 </LinearLayout>

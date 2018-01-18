@@ -2,7 +2,9 @@ package com.example.martasantos.myapplication;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,9 +25,10 @@ public class CriarEvento extends AppCompatActivity {
 
     Button criarEvento;
     ArrayList<DbHelper> eventos;
-    EditText nomeEvento, localEvento, comeca, duracao;
+    EditText nomeEvento, localEvento, comeca, duracao, dataE;
     private String [] lembrete  = new String[]{"1","2","3","4"};
     private Spinner sp;
+    SharedPreferences sharedPreferences;
 
 EditText time;
 
@@ -37,6 +40,7 @@ EditText time;
 
         values.put("nomeEvento", nomeEvento.getText().toString());
         values.put("localEvento", localEvento.getText().toString());
+        values.put("data", dataE.getText().toString());
         values.put("comeca", comeca.getText().toString());
         values.put("duracao", duracao.getText().toString());
         values.put("lembrete",sp.getSelectedItem().toString());
@@ -57,8 +61,17 @@ EditText time;
         sp.setAdapter(adapter);
         //sp.setAdapter(adapter);
 
+        sharedPreferences = getSharedPreferences("Data",MODE_PRIVATE);
+        int mes=sharedPreferences.getInt("mes",0);
+        int dia=sharedPreferences.getInt("dia",0);
+        int ano=sharedPreferences.getInt("ano",0);
+
+        String data= String.valueOf(mes)+"/"+String.valueOf(dia)+"/"+String.valueOf(ano);
+
         nomeEvento=(EditText)findViewById(R.id.nomeEvento);
         localEvento=(EditText)findViewById(R.id.localEvento);
+        dataE=(EditText)findViewById(R.id.dataEvento);
+        dataE.setText(data);
         comeca=(EditText)findViewById(R.id.comeca);
         duracao=(EditText)findViewById(R.id.duracao);
 
@@ -107,7 +120,6 @@ EditText time;
                     b.putString("nomeEvento",nomeEvento.getText().toString());
                     d.putExtras(b);
                     startActivity(d);
-
                     Toast.makeText(getApplicationContext(), "Evento Criado com sucesso", Toast.LENGTH_SHORT).show();
                 }catch (Exception e ){
                     e.printStackTrace();

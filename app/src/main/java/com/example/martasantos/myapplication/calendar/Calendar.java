@@ -29,20 +29,22 @@ public class Calendar extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int i, int i1, int i2) {
 
-                SharedPreferences x = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+               /* SharedPreferences x = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
                 SharedPreferences.Editor mEditor = x.edit();
                 mEditor.putInt("dia", i);
                 mEditor.putInt("mes", i1);
                 mEditor.putInt("ano", i2);
                 mEditor.commit();
-
-
-
+*/
+                sharedPreferences=getSharedPreferences("Data",MODE_PRIVATE);
+                SharedPreferences.Editor mEditor = sharedPreferences.edit();
+                mEditor.putInt("mes",i);
+                mEditor.putInt("dia",i1+1);
+                mEditor.putInt("ano",i2);
+                mEditor.commit();
                 Intent j = new Intent(getApplicationContext(), HorasL.class);
-
                 startActivity(j);
-
             }
         });
     }
