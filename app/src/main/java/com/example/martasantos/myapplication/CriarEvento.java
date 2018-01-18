@@ -78,11 +78,11 @@ public class CriarEvento extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     insertEvent();
-                    //Intent d = new Intent(getApplicationContext(), HorasL.class);
+                    Intent d = new Intent(getApplicationContext(), HorasL.class);
                     Bundle b = new Bundle();
                     b.putString("nomeEvento",nomeEvento.getText().toString());
-                    //d.putExtras(b);
-                    //startActivity(d);
+                    d.putExtras(b);
+                    startActivity(d);
 
                     Toast.makeText(getApplicationContext(), "Evento Criado com sucesso", Toast.LENGTH_SHORT).show();
                 }catch (Exception e ){
