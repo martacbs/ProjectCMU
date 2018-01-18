@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.martasantos.myapplication.CriarEvento;
 import com.example.martasantos.myapplication.R;
+import com.example.martasantos.myapplication.models.Evento;
 import com.example.martasantos.myapplication.models.Horas;
 
 import java.util.List;
@@ -23,10 +24,13 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
 
     private Context mContext;
     private List<Horas> mHoras;
+    private List<Evento> evento;
+    private Evento eventos;
 
-    public HorasAdapter(Context mContext, List<Horas> mContacts) {
+    public HorasAdapter(Context mContext, List<Horas> mContacts, List<Evento> eventos) {
         this.mContext = mContext;
         this.mHoras = mContacts;
+        this.evento = eventos;
     }
 
     public Context getmContext() {
@@ -62,8 +66,18 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
         final Horas hora = mHoras.get(position);
 
 
+        TextView textView1 = viewHolder.nameEvent;
+        for(int j=0; j<evento.size(); j++) {
+        for(int i=0; i<mHoras.size(); i++) {
 
-
+               if(j == position) {
+                   eventos = evento.get(position);
+                   if (eventos.getComeca().equals(mHoras.get(i).getHora())) {
+                       textView1.setText(eventos.getNome());
+                   }
+               }
+            }
+        }
         TextView textView=viewHolder.nameTextView;
         textView.setText(hora.getHora());
 
@@ -93,7 +107,7 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView nameTextView, nameEvent;
+        public TextView nameTextView, nameEvent, comeca;
         public Button messageButton;
 
 
@@ -103,7 +117,7 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
             nameTextView =(TextView) itemView.findViewById(R.id.horas);
             messageButton= (Button) itemView.findViewById(R.id.message_button);
             nameEvent=(TextView)itemView.findViewById(R.id.eventos);
-
+            comeca=(TextView) itemView.findViewById(R.id.comeca);
 
 
         }

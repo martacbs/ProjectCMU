@@ -36,15 +36,20 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="127dp" />
 
+
     <EditText
         android:id="@+id/comeca"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+        android:hint="Selecione a hora"
+
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Começa"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="188dp" />
+        tools:layout_editor_absoluteY="127dp"
+
+
+         />
 
     <EditText
         android:id="@+id/duracao"
