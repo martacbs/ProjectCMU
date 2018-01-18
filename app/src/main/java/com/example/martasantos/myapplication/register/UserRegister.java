@@ -54,7 +54,7 @@ public class UserRegister extends AppCompatActivity {
         password = (EditText) findViewById(R.id.insertPassword);
         confirmarPassword = (EditText) findViewById(R.id.insertConfirmPassword);
         registar = (Button) findViewById(R.id.button_guardarRegisto);
-        login = (Button) findViewById(R.id.button_Login);
+       // login = (Button) findViewById(R.id.button_Login);
 
         registar.setOnClickListener(new View.OnClickListener() {
             @Override

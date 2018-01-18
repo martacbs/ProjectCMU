@@ -18,6 +18,7 @@ import java.util.Calendar;
 import android.app.TimePickerDialog;
 import android.widget.TimePicker;
 import com.example.martasantos.myapplication.database.DbHelper;
+import com.example.martasantos.myapplication.register.UserRegister;
 
 import java.util.ArrayList;
 
@@ -113,17 +114,26 @@ EditText time;
         criarEvento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    insertEvent();
-                    Intent d = new Intent(getApplicationContext(), HorasL.class);
-                    Bundle b = new Bundle();
-                    b.putString("nomeEvento",nomeEvento.getText().toString());
-                    d.putExtras(b);
-                    startActivity(d);
-                    Toast.makeText(getApplicationContext(), "Evento Criado com sucesso", Toast.LENGTH_SHORT).show();
-                }catch (Exception e ){
-                    e.printStackTrace();
-               }
+                if(nomeEvento.length()==0){
+                    Toast.makeText(CriarEvento.this, "Insira o seu nome do Evento", Toast.LENGTH_LONG).show();
+                }else if(localEvento.length()==0) {
+                    Toast.makeText(CriarEvento.this, "Insira o local do Evento", Toast.LENGTH_LONG).show();
+                }else if(duracao.length()==0) {
+                    Toast.makeText(CriarEvento.this, "Insira a duração do Evento", Toast.LENGTH_LONG).show();
+                }else{
+                    try {
+                        insertEvent();
+                        Intent d = new Intent(getApplicationContext(), HorasL.class);
+                        Bundle b = new Bundle();
+                        b.putString("nomeEvento", nomeEvento.getText().toString());
+                        d.putExtras(b);
+                        startActivity(d);
+                        Toast.makeText(getApplicationContext(), "Evento Criado com sucesso", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
                 }
         });
 
