@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
 
-import com.example.martasantos.myapplication.CriarEvento;
+import com.example.martasantos.myapplication.evento.CriarEvento;
 import com.example.martasantos.myapplication.R;
 import com.example.martasantos.myapplication.models.Evento;
 import com.example.martasantos.myapplication.models.Horas;

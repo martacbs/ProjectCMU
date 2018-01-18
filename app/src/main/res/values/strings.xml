@@ -9,4 +9,6 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_menu_navigation">MenuNavigation</string>
+    <string name="title_activity_menu_drawer">MenuDrawer</string>
+    <string name="title_activity_menu__lateral">Menu_Lateral</string>
 </resources>

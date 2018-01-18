@@ -1,8 +1,10 @@
 package com.example.martasantos.myapplication;
 
-import android.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,19 +14,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.martasantos.myapplication.fragments.Menu1;
-import com.example.martasantos.myapplication.fragments.Menu2;
-import com.example.martasantos.myapplication.fragments.Menu3;
+import com.example.martasantos.myapplication.fragments.FirstLayout;
+import com.example.martasantos.myapplication.fragments.SecondLayout;
+import com.example.martasantos.myapplication.fragments.ThirdLayout;
 
-public class MenuNavigation extends AppCompatActivity
+public class Menu_Lateral extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_navigation);
+        setContentView(R.layout.activity_menu__lateral);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -34,8 +38,6 @@ public class MenuNavigation extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        displaySelectedScreen(R.id.nav_menu1);
     }
 
     @Override
@@ -51,7 +53,7 @@ public class MenuNavigation extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_navigation, menu);
+        getMenuInflater().inflate(R.menu.menu__lateral, menu);
         return true;
     }
 
@@ -70,38 +72,26 @@ public class MenuNavigation extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    private void displaySelectedScreen(int id){
-        Fragment fragment = null;
-
-        switch(id){
-            case R.id.nav_menu1:
-                fragment = new Menu1();
-                break;
-            case R.id.nav_menu2:
-                fragment = new Menu2();
-                break;
-            case R.id.nav_menu3:
-                fragment = new Menu3();
-                break;
-        }
-        if(fragment != null){
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-         //   ft.replace(R.layout.content_menu_navigation, fragment);
-            ft.commit();
-        }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-    }
-
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        FragmentManager fragmentManager=getFragmentManager();
 
+        if (id == R.id.nav_first_layout) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_MENU, new FirstLayout()).commit();
+        } else if (id == R.id.nav_second_layout) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_MENU, new SecondLayout()).commit();
+        } else if (id == R.id.nav_third_layout) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_MENU, new ThirdLayout()).commit();
+        }
 
-
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 }

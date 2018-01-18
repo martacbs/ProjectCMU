@@ -1,21 +1,28 @@
 package com.example.martasantos.myapplication.calendar;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
 //import com.example.martasantos.myapplication.HorasL;
 import com.example.martasantos.myapplication.HorasL;
 import com.example.martasantos.myapplication.R;
+import com.example.martasantos.myapplication.fragments.FirstLayout;
+import com.example.martasantos.myapplication.fragments.SecondLayout;
+import com.example.martasantos.myapplication.fragments.ThirdLayout;
 
 public class Calendar extends AppCompatActivity {
 
     CalendarView calendarView;
-    TextView dateDisplay;
+
     SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,4 +55,6 @@ public class Calendar extends AppCompatActivity {
             }
         });
     }
+
+
 }

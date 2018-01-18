@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.martasantos.myapplication.CriarEvento">
+    tools:context="com.example.martasantos.myapplication.evento.CriarEvento">
 
 
     <TextView
@@ -94,7 +94,7 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         tools:layout_editor_absoluteX="130dp"

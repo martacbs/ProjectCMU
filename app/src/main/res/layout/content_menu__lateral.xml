@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.martasantos.myapplication.MenuNavigation"
-    tools:showIn="@layout/app_bar_menu_navigation">
+    tools:context="com.example.martasantos.myapplication.Menu_Lateral"
+    tools:showIn="@layout/app_bar_menu__lateral">
+
+    <FrameLayout
+        android:id="@+id/content_MENU"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </android.support.constraint.ConstraintLayout>

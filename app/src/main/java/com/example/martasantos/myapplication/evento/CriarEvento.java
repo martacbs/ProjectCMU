@@ -1,10 +1,9 @@
-package com.example.martasantos.myapplication;
+package com.example.martasantos.myapplication.evento;
 
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,8 +16,10 @@ import android.widget.Toast;
 import java.util.Calendar;
 import android.app.TimePickerDialog;
 import android.widget.TimePicker;
+
+import com.example.martasantos.myapplication.HorasL;
+import com.example.martasantos.myapplication.R;
 import com.example.martasantos.myapplication.database.DbHelper;
-import com.example.martasantos.myapplication.register.UserRegister;
 
 import java.util.ArrayList;
 
@@ -31,7 +32,6 @@ public class CriarEvento extends AppCompatActivity {
     private Spinner sp;
     SharedPreferences sharedPreferences;
 
-EditText time;
 
     private void insertEvent() throws Exception{
         ArrayList<DbHelper> eventos = new ArrayList<DbHelper>();
@@ -103,7 +103,6 @@ EditText time;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Object item = parent.getItemAtPosition(position);
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -116,11 +115,11 @@ EditText time;
             public void onClick(View v) {
                 if(nomeEvento.length()==0){
                     Toast.makeText(CriarEvento.this, "Insira o seu nome do Evento", Toast.LENGTH_LONG).show();
-                }else if(localEvento.length()==0) {
+                }else if (localEvento.length()==0) {
                     Toast.makeText(CriarEvento.this, "Insira o local do Evento", Toast.LENGTH_LONG).show();
-                }else if(duracao.length()==0) {
+                }else if (duracao.length()==0) {
                     Toast.makeText(CriarEvento.this, "Insira a duração do Evento", Toast.LENGTH_LONG).show();
-                }else{
+                }else {
                     try {
                         insertEvent();
                         Intent d = new Intent(getApplicationContext(), HorasL.class);
@@ -133,7 +132,6 @@ EditText time;
                         e.printStackTrace();
                     }
                 }
-
                 }
         });
 
