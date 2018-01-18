@@ -32,7 +32,6 @@ public class CriarEvento extends AppCompatActivity {
         SQLiteDatabase db = events.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-
         values.put("nomeEvento", nomeEvento.getText().toString());
         values.put("localEvento", localEvento.getText().toString());
         values.put("comeca", comeca.getText().toString());
@@ -51,9 +50,8 @@ public class CriarEvento extends AppCompatActivity {
         ArrayList<DbHelper> eventos = new ArrayList<DbHelper>(10);
         sp=(Spinner)findViewById(R.id.spinner);
         ArrayAdapter<String> adapter= new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item,lembrete );
-       // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp.setAdapter(adapter);
-
         //sp.setAdapter(adapter);
 
         nomeEvento=(EditText)findViewById(R.id.nomeEvento);
@@ -80,12 +78,11 @@ public class CriarEvento extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     insertEvent();
-                    Intent d = new Intent(getApplicationContext(), HorasL.class);
+                    //Intent d = new Intent(getApplicationContext(), HorasL.class);
                     Bundle b = new Bundle();
                     b.putString("nomeEvento",nomeEvento.getText().toString());
-                    d.putExtras(b);
-                    startActivity(d);
-
+                    //d.putExtras(b);
+                    //startActivity(d);
 
                     Toast.makeText(getApplicationContext(), "Evento Criado com sucesso", Toast.LENGTH_SHORT).show();
                 }catch (Exception e ){

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.martasantos.myapplication.adapter.HorasAdapter;
 import com.example.martasantos.myapplication.database.DbHelper;
 import com.example.martasantos.myapplication.models.Evento;
+
 import com.example.martasantos.myapplication.models.Horas;
 
 import java.util.ArrayList;
@@ -45,8 +46,6 @@ public class HorasL extends AppCompatActivity {
 
         rvHoras.setLayoutManager(new LinearLayoutManager(
                 this));
-// O RATO DA MARTA SANTOS
-
     }
 
     private ArrayList<Horas> createHorasList(int x) {

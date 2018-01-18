@@ -1,9 +1,9 @@
-package com.example.martasantos.myapplication;
-
+package com.example.martasantos.myapplication.mapas.restaurants;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.martasantos.myapplication.R;
 import com.example.martasantos.myapplication.retrofit.POI;
 import com.example.martasantos.myapplication.retrofit.TourDataApi;
 import com.google.android.gms.maps.CameraUpdate;
@@ -23,7 +23,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Mapas extends AppCompatActivity implements OnMapReadyCallback{
+/**
+ * Created by martasantos on 17/01/18.
+ */
+
+public class MapasParis extends AppCompatActivity implements OnMapReadyCallback {
 
     private SupportMapFragment mMapFragment;
     private GoogleMap mGoogleMap;
@@ -40,20 +44,15 @@ public class Mapas extends AppCompatActivity implements OnMapReadyCallback{
         mGoogleMap = googleMap;
 
 
-       // zoomToLocation();
-        //addMarker();
-        //
-
-        zoomToLocationLondon();
-        getApi().getListPointsOfInterest("London", "attraction", "Science")
+        //zoomToLocationAmsterdam();
+        getApi().getListPointsOfInterest("Paris", "restaurant", "Restaurant")
                 .enqueue(new Callback<List<POI>>(){
                     @Override
                     public void onResponse(Call<List<POI>> call, Response<List<POI>> response){
                         List<POI> points=response.body();
-                        zoomToLocationLondon();
-                        addMarkerLondon(points);
+                        zoomToLocationAmsterdam();
+                        addMarkerAmsterdam(points);
                     }
-
                     @Override
                     public void onFailure(Call<List<POI>> call, Throwable t){
 
@@ -63,7 +62,7 @@ public class Mapas extends AppCompatActivity implements OnMapReadyCallback{
     }
 
 
-    private void addMarkerLondon(List<POI> poi){
+    private void addMarkerAmsterdam(List<POI> poi){
 
         for(int i=0; i<poi.size();i++) {
             LatLng latLng = new LatLng(poi.get(i).getLat(), poi.get(i).getLng());
@@ -82,6 +81,8 @@ public class Mapas extends AppCompatActivity implements OnMapReadyCallback{
         });
 
     }/*
+
+
     private void addMarker(){
         LatLng latLng=new LatLng(47.3668491,-8.1947272);
 
@@ -100,8 +101,10 @@ public class Mapas extends AppCompatActivity implements OnMapReadyCallback{
 
     }*/
 
-    private void zoomToLocationLondon(){
-        LatLng latLng=new LatLng(51.496715,-0.1757499);
+
+
+    private void zoomToLocationAmsterdam(){
+        LatLng latLng=new LatLng(48.8587737,2.2066338);
 
         CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latLng,18);
 
@@ -132,4 +135,8 @@ public class Mapas extends AppCompatActivity implements OnMapReadyCallback{
         return getRetrofit().create(TourDataApi.class);
     }
 }
+
+
+
+
 
