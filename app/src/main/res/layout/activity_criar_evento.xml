@@ -51,6 +51,7 @@
 
          />
 
+
     <EditText
         android:id="@+id/duracao"
         android:layout_width="match_parent"

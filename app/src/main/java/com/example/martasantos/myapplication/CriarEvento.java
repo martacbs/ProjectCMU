@@ -12,7 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
+import java.util.Calendar;
+import android.app.TimePickerDialog;
+import android.widget.TimePicker;
 import com.example.martasantos.myapplication.database.DbHelper;
 
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class CriarEvento extends AppCompatActivity {
     private String [] lembrete  = new String[]{"1","2","3","4"};
     private Spinner sp;
 
+EditText time;
 
     private void insertEvent() throws Exception{
         ArrayList<DbHelper> eventos = new ArrayList<DbHelper>();
@@ -58,6 +61,27 @@ public class CriarEvento extends AppCompatActivity {
         localEvento=(EditText)findViewById(R.id.localEvento);
         comeca=(EditText)findViewById(R.id.comeca);
         duracao=(EditText)findViewById(R.id.duracao);
+
+
+        // perform click event listener on edit text
+        comeca.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(CriarEvento.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        comeca.setText(selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
+            }
+        });
 
 
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
