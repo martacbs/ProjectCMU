@@ -1,5 +1,6 @@
 package com.example.martasantos.myapplication.login;
 
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -11,20 +12,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.martasantos.myapplication.Menu_Lateral;
 import com.example.martasantos.myapplication.R;
-import com.example.martasantos.myapplication.calendar.Calendar;
 import com.example.martasantos.myapplication.database.DbHelper;
-import com.example.martasantos.myapplication.interests.UserInterests;
 import com.example.martasantos.myapplication.models.User;
 
 public class Login extends AppCompatActivity {
 
     Button login;
     EditText user, pass;
-
+    private FragmentManager fragmentManager;
 
 
     @Override
@@ -32,6 +31,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         login = (Button) findViewById(R.id.buttonLogin);
         user = (EditText) findViewById(R.id.insertUser);
         pass = (EditText) findViewById(R.id.insertPass);
@@ -50,7 +50,7 @@ public class Login extends AppCompatActivity {
                         ProcessData p= new ProcessData();
                         p.execute(null, null);
                         //Toast.makeText(Login.this, "Login suceful", Toast.LENGTH_LONG).show();
-                        Intent d = new Intent(getApplicationContext(), Calendar.class);
+                        Intent d = new Intent(getApplicationContext(), Menu_Lateral.class);
                         startActivity(d);
 
                     }else{
@@ -58,7 +58,11 @@ public class Login extends AppCompatActivity {
                     }
             }
         });
+
+
     }
+
+
 
     private User verificarUser() {
         DbHelper dbHelper = new DbHelper(Login.this);

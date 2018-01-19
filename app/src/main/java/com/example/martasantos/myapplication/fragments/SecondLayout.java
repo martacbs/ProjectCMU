@@ -16,8 +16,7 @@ import com.example.martasantos.myapplication.R;
  */
 
 public class SecondLayout extends Fragment {
-    CalendarView calendarView;
-    SharedPreferences sharedPreferences;
+
     View myView;
 
     @Nullable

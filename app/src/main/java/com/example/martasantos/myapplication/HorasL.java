@@ -31,6 +31,8 @@ public class HorasL extends AppCompatActivity {
         setContentView(R.layout.activity_lista_horas);
         this.eventos = new ArrayList<>();
         reloadEventList(eventos);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         RecyclerView rvHoras =(RecyclerView) findViewById(R.id.rvHoras);
 
         horas = createHorasList(24);

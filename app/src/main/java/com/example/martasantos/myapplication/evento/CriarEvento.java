@@ -1,9 +1,11 @@
 package com.example.martasantos.myapplication.evento;
 
+import android.app.NotificationManager;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +20,7 @@ import android.app.TimePickerDialog;
 import android.widget.TimePicker;
 
 import com.example.martasantos.myapplication.HorasL;
+import com.example.martasantos.myapplication.Notifications;
 import com.example.martasantos.myapplication.R;
 import com.example.martasantos.myapplication.database.DbHelper;
 
@@ -55,12 +58,14 @@ public class CriarEvento extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_evento);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ArrayList<DbHelper> eventos = new ArrayList<DbHelper>(10);
         sp=(Spinner)findViewById(R.id.spinner);
         ArrayAdapter<String> adapter= new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item,lembrete );
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         sp.setAdapter(adapter);
-        //sp.setAdapter(adapter);
+
 
         sharedPreferences = getSharedPreferences("Data",MODE_PRIVATE);
         int mes=sharedPreferences.getInt("mes",0);
@@ -128,6 +133,7 @@ public class CriarEvento extends AppCompatActivity {
                         d.putExtras(b);
                         startActivity(d);
                         Toast.makeText(getApplicationContext(), "Evento Criado com sucesso", Toast.LENGTH_SHORT).show();
+                        Notifications.openActivityNotification(getApplicationContext());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

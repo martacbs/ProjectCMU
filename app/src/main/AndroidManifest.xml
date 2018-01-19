@@ -24,12 +24,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".interests.UserInterests" />
-        <activity android:name=".calendar.Calendar" />
-        <activity android:name=".HorasL" />
-        <activity android:name=".login.Login" />
-        <activity android:name=".register.UserRegister" />
-        <activity android:name=".evento.CriarEvento" />
+        <activity android:name=".interests.UserInterests" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".HorasL" android:parentActivityName=".Menu_Lateral"/>
+        <activity android:name=".login.Login" android:parentActivityName=".MainActivity" />
+        <activity android:name=".register.UserRegister" android:parentActivityName=".MainActivity" />
+        <activity android:name=".evento.CriarEvento" android:parentActivityName=".HorasL" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

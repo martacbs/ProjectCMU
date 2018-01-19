@@ -10,7 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
-import com.example.martasantos.myapplication.calendar.Calendar;
+
+import com.example.martasantos.myapplication.Menu_Lateral;
 import com.example.martasantos.myapplication.R;
 import com.example.martasantos.myapplication.database.DbHelper;
 import com.example.martasantos.myapplication.login.Login;
@@ -31,6 +32,7 @@ public class UserInterests extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_interests);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         submeter = (Button) findViewById(R.id.submeter);
 
         submeter.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +48,7 @@ public class UserInterests extends AppCompatActivity {
 
                 Long id_google=getIntent().getLongExtra("user_id_google",-1);
                 if(id_google>0){
-                    Intent h = new Intent(getApplicationContext(), Calendar.class);
+                    Intent h = new Intent(getApplicationContext(), Menu_Lateral.class);
                     startActivity(h);
                 }else {
                     Intent j = new Intent(getApplicationContext(), Login.class);

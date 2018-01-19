@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SignInButton SignIn;
     private GoogleApiClient googleApiClient;
     private static final int REQ_CODE = 9001;
-   // private ImageView X_Agenda;
+
 
     //facebook
     LoginButton loginButton;
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         register=(Button)findViewById(R.id.bRegister);
         login=(Button)findViewById(R.id.bLogin);
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

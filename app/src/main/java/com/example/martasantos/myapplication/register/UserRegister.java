@@ -47,6 +47,7 @@ public class UserRegister extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_register);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         name = (EditText) findViewById(R.id.insertNome);
         email = (EditText) findViewById(R.id.insertEmail);
         localidade = (EditText) findViewById(R.id.insertLocalidade);
