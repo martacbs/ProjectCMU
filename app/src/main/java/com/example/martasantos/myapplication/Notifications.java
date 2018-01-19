@@ -15,7 +15,7 @@ import com.example.martasantos.myapplication.evento.CriarEvento;
 public class Notifications {
 
     private static final int NOTIFICATIN_ID_OPEN_ACTIVITY=9;
-
+//skjfhksdhk
     public static void openActivityNotification(Context context){
         NotificationCompat.Builder notif=new NotificationCompat.Builder(context);
         NotificationManager nm=(NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
