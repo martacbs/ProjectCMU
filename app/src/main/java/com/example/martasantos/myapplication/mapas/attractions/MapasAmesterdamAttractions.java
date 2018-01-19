@@ -51,7 +51,7 @@ public class MapasAmesterdamAttractions extends AppCompatActivity implements OnM
                     public void onResponse(Call<List<POI>> call, Response<List<POI>> response){
                         List<POI> points=response.body();
 
-                        addMarkerAmsterdam(points);
+                        addMarkerAmsterdamAttractions(points);
                     }
                     @Override
                     public void onFailure(Call<List<POI>> call, Throwable t){
@@ -62,7 +62,7 @@ public class MapasAmesterdamAttractions extends AppCompatActivity implements OnM
     }
 
 
-    private void addMarkerAmsterdam(List<POI> poi){
+    private void addMarkerAmsterdamAttractions(List<POI> poi){
         for(int i=0; i<poi.size();i++) {
             LatLng latLng = new LatLng(poi.get(i).getLat(), poi.get(i).getLng());
 
@@ -83,7 +83,7 @@ public class MapasAmesterdamAttractions extends AppCompatActivity implements OnM
     }
 
 
-    private void zoomToLocationAmsterdam(){
+    private void zoomToLocationAmsterdamAttractions(){
         LatLng latLng=new LatLng(52.3545649,4.7581975);
         CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latLng,18);
         mGoogleMap.animateCamera(cameraUpdate);

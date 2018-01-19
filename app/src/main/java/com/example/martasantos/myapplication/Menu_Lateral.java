@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.widget.CalendarView;
 
 import com.example.martasantos.myapplication.fragments.Calendar;
-import com.example.martasantos.myapplication.fragments.SecondLayout;
+import com.example.martasantos.myapplication.fragments.Sugestions;
 import com.example.martasantos.myapplication.fragments.About;
 
 public class Menu_Lateral extends AppCompatActivity
@@ -93,7 +93,7 @@ public class Menu_Lateral extends AppCompatActivity
                     .replace(R.id.content_MENU, new Calendar()).commit();
         } else if (id == R.id.nav_second_layout) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_MENU, new SecondLayout()).commit();
+                    .replace(R.id.content_MENU, new Sugestions()).commit();
         } else if (id == R.id.nav_third_layout) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_MENU, new About()).commit();

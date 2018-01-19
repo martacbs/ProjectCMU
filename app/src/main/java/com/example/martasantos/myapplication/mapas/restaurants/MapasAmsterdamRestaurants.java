@@ -27,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by martasantos on 17/01/18.
  */
 
-public class MapasDubai extends AppCompatActivity implements OnMapReadyCallback {
+public class MapasAmsterdamRestaurants extends AppCompatActivity implements OnMapReadyCallback {
 
     private SupportMapFragment mMapFragment;
     private GoogleMap mGoogleMap;
@@ -45,13 +45,13 @@ public class MapasDubai extends AppCompatActivity implements OnMapReadyCallback 
 
 
         //zoomToLocationAmsterdam();
-        getApi().getListPointsOfInterest("Dubai", "restaurant", "Restaurant")
+        getApi().getListPointsOfInterest("Amsterdam", "restaurant", "Restaurant")
                 .enqueue(new Callback<List<POI>>(){
                     @Override
                     public void onResponse(Call<List<POI>> call, Response<List<POI>> response){
                         List<POI> points=response.body();
-                        zoomToLocationDubai();
-                        addMarkerDubai(points);
+                        zoomToLocationAmsterdamRestaurants();
+                        addMarkerAmsterdamRestaurants(points);
                     }
                     @Override
                     public void onFailure(Call<List<POI>> call, Throwable t){
@@ -62,7 +62,7 @@ public class MapasDubai extends AppCompatActivity implements OnMapReadyCallback 
     }
 
 
-    private void addMarkerDubai(List<POI> poi){
+    private void addMarkerAmsterdamRestaurants(List<POI> poi){
 
         for(int i=0; i<poi.size();i++) {
             LatLng latLng = new LatLng(poi.get(i).getLat(), poi.get(i).getLng());
@@ -83,10 +83,8 @@ public class MapasDubai extends AppCompatActivity implements OnMapReadyCallback 
     }
 
 
-
-
-    private void zoomToLocationDubai(){
-        LatLng latLng=new LatLng(25.211832,55.30791);
+    private void zoomToLocationAmsterdamRestaurants(){
+        LatLng latLng=new LatLng(52.3545649,4.7581975);
 
         CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latLng,18);
 
@@ -117,5 +115,4 @@ public class MapasDubai extends AppCompatActivity implements OnMapReadyCallback 
         return getRetrofit().create(TourDataApi.class);
     }
 }
-
 

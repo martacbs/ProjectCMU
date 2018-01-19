@@ -2,6 +2,9 @@ package com.example.martasantos.myapplication.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,17 +68,18 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
     public void onBindViewHolder(HorasAdapter.ViewHolder viewHolder, int position){
         final Horas hora = mHoras.get(position);
 
-
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getmContext());
+        String nome_evento = sp.getString("nome_evento","");
+        Log.d("latitude", nome_evento);
         TextView textView1 = viewHolder.nameEvent;
         for(int j=0; j<evento.size(); j++) {
-        for(int i=0; i<mHoras.size(); i++) {
-
-               if(j == position) {
-                   eventos = evento.get(position);
-                   if (eventos.getComeca().equals(mHoras.get(i).getHora())) {
-                       textView1.setText(eventos.getNome());
-                   }
-               }
+            for(int i=0; i<mHoras.size(); i++) {
+                if(j == position) {
+                    eventos = evento.get(position);
+                    if (eventos.getComeca().equals(mHoras.get(i).getHora())) {
+                        textView1.setText(nome_evento);
+                    }
+                }
             }
         }
         TextView textView=viewHolder.nameTextView;

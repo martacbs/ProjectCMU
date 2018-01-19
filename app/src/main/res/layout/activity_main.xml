@@ -6,32 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.martasantos.myapplication.MainActivity">
-<!--<LinearLayout
-    android:layout_width="200dp"
-    android:layout_height="200dp"
-    android:orientation="horizontal"
-    android:id="@+id/image_section"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="40dp">
-
-    <ImageView
-        android:id="@+id/xagenda"
-        android:layout_width="200dp"
-
-        android:layout_height="match_parent"
-        android:src="@drawable/xagenda"
-
-        />
-</LinearLayout>-->
 
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/imageView"
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:src="@drawable/logo"
         android:layout_margin="60dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginRight="20dp"/>-->
 
     <LinearLayout
         android:layout_width="wrap_content"

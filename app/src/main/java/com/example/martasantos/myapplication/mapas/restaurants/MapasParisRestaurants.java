@@ -27,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by martasantos on 17/01/18.
  */
 
-public class MapasRoma extends AppCompatActivity implements OnMapReadyCallback {
+public class MapasParisRestaurants extends AppCompatActivity implements OnMapReadyCallback {
 
     private SupportMapFragment mMapFragment;
     private GoogleMap mGoogleMap;
@@ -45,13 +45,13 @@ public class MapasRoma extends AppCompatActivity implements OnMapReadyCallback {
 
 
         //zoomToLocationAmsterdam();
-        getApi().getListPointsOfInterest("Rome", "restaurant", "Restaurant")
+        getApi().getListPointsOfInterest("Paris", "restaurant", "Restaurant")
                 .enqueue(new Callback<List<POI>>(){
                     @Override
                     public void onResponse(Call<List<POI>> call, Response<List<POI>> response){
                         List<POI> points=response.body();
-                        zoomToLocationRoma();
-                        addMarkerRoma(points);
+                        zoomToLocationParisRestaurants();
+                        addMarkerParisRestaurants(points);
                     }
                     @Override
                     public void onFailure(Call<List<POI>> call, Throwable t){
@@ -62,7 +62,7 @@ public class MapasRoma extends AppCompatActivity implements OnMapReadyCallback {
     }
 
 
-    private void addMarkerRoma(List<POI> poi){
+    private void addMarkerParisRestaurants(List<POI> poi){
 
         for(int i=0; i<poi.size();i++) {
             LatLng latLng = new LatLng(poi.get(i).getLat(), poi.get(i).getLng());
@@ -82,12 +82,16 @@ public class MapasRoma extends AppCompatActivity implements OnMapReadyCallback {
 
     }
 
-    private void zoomToLocationRoma(){
-        LatLng latLng=new LatLng(41.9099856,12.3955708);
+
+
+    private void zoomToLocationParisRestaurants(){
+        LatLng latLng=new LatLng(48.8587737,2.2066338);
 
         CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latLng,18);
 
         mGoogleMap.animateCamera(cameraUpdate);
+
+
     }
 
 

@@ -1,11 +1,14 @@
 package com.example.martasantos.myapplication.evento;
 
+import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v4.app.NotificationCompat;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +23,6 @@ import android.app.TimePickerDialog;
 import android.widget.TimePicker;
 
 import com.example.martasantos.myapplication.HorasL;
-import com.example.martasantos.myapplication.Notifications;
 import com.example.martasantos.myapplication.R;
 import com.example.martasantos.myapplication.database.DbHelper;
 
@@ -127,14 +129,26 @@ public class CriarEvento extends AppCompatActivity {
                 }else {
                     try {
                         insertEvent();
+                        /*sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        SharedPreferences.Editor mEditor = sharedPreferences.edit();
+                        mEditor.putString("nomeEvento", nomeEvento.getText().toString());
+                        mEditor.commit();*/
+
+                        /*sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        SharedPreferences.Editor mEditor = sharedPreferences.edit();
+                        mEditor.putString("NomeEvento", nomeEvento.getText().toString());
+                        mEditor.commit();*/
+
                         Intent d = new Intent(getApplicationContext(), HorasL.class);
-                        Bundle b = new Bundle();
+
+
+                       /* Bundle b = new Bundle();
                         b.putString("nomeEvento", nomeEvento.getText().toString());
-                        d.putExtras(b);
+                        d.putExtras(b);*/
                         startActivity(d);
-                        Toast.makeText(getApplicationContext(), "Evento Criado com sucesso", Toast.LENGTH_SHORT).show();
-                        Notifications.openActivityNotification(getApplicationContext());
-                    } catch (Exception e) {
+                        addNotificationToEvent();
+
+                   } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -142,4 +156,20 @@ public class CriarEvento extends AppCompatActivity {
         });
 
     }
+
+    public void addNotificationToEvent(){
+        Intent intent=new Intent();
+        PendingIntent pIntent=PendingIntent.getActivity(CriarEvento.this,0,intent,0);
+        Notification noti= new Notification.Builder(CriarEvento.this)
+                .setTicker("EVENTO")
+                .setContentTitle("Evento\n"+nomeEvento.getText().toString()+"\nCriado!!")
+                .setContentText("o seu evento foi adicionado com sucesso!")
+                .setSmallIcon(R.drawable.notifications)
+                .setContentIntent(pIntent).getNotification();
+
+        noti.flags=Notification.FLAG_AUTO_CANCEL;
+        NotificationManager nm=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        nm.notify(0,noti);
+    }
+
 }

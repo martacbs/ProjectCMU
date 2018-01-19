@@ -49,8 +49,8 @@ public class MapasLondresAttractions extends AppCompatActivity implements OnMapR
                     @Override
                     public void onResponse(Call<List<POI>> call, Response<List<POI>> response) {
                         List<POI> points = response.body();
-                        zoomToLocationLondon();
-                        addMarkerLondon(points);
+                        zoomToLocationLondonAttractions();
+                        addMarkerLondonAttractions(points);
                     }
 
                     @Override
@@ -62,7 +62,7 @@ public class MapasLondresAttractions extends AppCompatActivity implements OnMapR
     }
 
 
-    private void addMarkerLondon(List<POI> poi) {
+    private void addMarkerLondonAttractions(List<POI> poi) {
 
         for (int i = 0; i < poi.size(); i++) {
             LatLng latLng = new LatLng(poi.get(i).getLat(), poi.get(i).getLng());
@@ -80,26 +80,7 @@ public class MapasLondresAttractions extends AppCompatActivity implements OnMapR
             }
         });
     }
-
-    private void addMarkerAmsterdan(List<POI> poi){
-
-        for(int i=0; i<poi.size();i++) {
-            LatLng latLng = new LatLng(poi.get(i).getLat(), poi.get(i).getLng());
-
-            Marker marker = mGoogleMap.addMarker(new MarkerOptions()
-                    .position(latLng)
-                    .title(poi.get(i).getCategory())
-                    .snippet(poi.get(i).getDetails()));
-        }
-        mGoogleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-
-                return true;
-            }
-        });
-
-    }/*
+    /*
     private void addMarker(){
         LatLng latLng=new LatLng(47.3668491,-8.1947272);
 
@@ -118,7 +99,7 @@ public class MapasLondresAttractions extends AppCompatActivity implements OnMapR
 
     }*/
 
-    private void zoomToLocationLondon(){
+    private void zoomToLocationLondonAttractions(){
         LatLng latLng=new LatLng(51.496715,-0.1757499);
 
         CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latLng,18);
@@ -127,17 +108,6 @@ public class MapasLondresAttractions extends AppCompatActivity implements OnMapR
 
 
     }
-
-    private void zoomToLocationAmsterdam(){
-        LatLng latLng=new LatLng(52.3545649,4.7581975);
-
-        CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latLng,18);
-
-        mGoogleMap.animateCamera(cameraUpdate);
-
-
-    }
-
 
     private void zoomToLocation(){
         LatLng latLng=new LatLng(0,-0);

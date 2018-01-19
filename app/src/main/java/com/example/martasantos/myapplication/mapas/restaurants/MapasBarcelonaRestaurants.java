@@ -27,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by martasantos on 17/01/18.
  */
 
-public class MapasParis extends AppCompatActivity implements OnMapReadyCallback {
+public class MapasBarcelonaRestaurants extends AppCompatActivity implements OnMapReadyCallback {
 
     private SupportMapFragment mMapFragment;
     private GoogleMap mGoogleMap;
@@ -45,13 +45,13 @@ public class MapasParis extends AppCompatActivity implements OnMapReadyCallback 
 
 
         //zoomToLocationAmsterdam();
-        getApi().getListPointsOfInterest("Paris", "restaurant", "Restaurant")
+        getApi().getListPointsOfInterest("Barcelona", "restaurant", "Restaurant")
                 .enqueue(new Callback<List<POI>>(){
                     @Override
                     public void onResponse(Call<List<POI>> call, Response<List<POI>> response){
                         List<POI> points=response.body();
-                        zoomToLocationAmsterdam();
-                        addMarkerAmsterdam(points);
+                        zoomToLocationBarcelonaRestaurants();
+                        addMarkerBarcelonaRestaurants(points);
                     }
                     @Override
                     public void onFailure(Call<List<POI>> call, Throwable t){
@@ -62,7 +62,7 @@ public class MapasParis extends AppCompatActivity implements OnMapReadyCallback 
     }
 
 
-    private void addMarkerAmsterdam(List<POI> poi){
+    private void addMarkerBarcelonaRestaurants(List<POI> poi){
 
         for(int i=0; i<poi.size();i++) {
             LatLng latLng = new LatLng(poi.get(i).getLat(), poi.get(i).getLng());
@@ -80,31 +80,10 @@ public class MapasParis extends AppCompatActivity implements OnMapReadyCallback 
             }
         });
 
-    }/*
+    }
 
-
-    private void addMarker(){
-        LatLng latLng=new LatLng(47.3668491,-8.1947272);
-
-        Marker marker=mGoogleMap.addMarker(new MarkerOptions()
-                .position(latLng)
-                .title("ESTG")
-                .snippet("Escola Superior de Tecnologia e Gestão"));
-
-        mGoogleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-
-                return true;
-            }
-        });
-
-    }*/
-
-
-
-    private void zoomToLocationAmsterdam(){
-        LatLng latLng=new LatLng(48.8587737,2.2066338);
+    private void zoomToLocationBarcelonaRestaurants(){
+        LatLng latLng=new LatLng(41.3947687,2.0785563);
 
         CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latLng,18);
 
@@ -135,8 +114,6 @@ public class MapasParis extends AppCompatActivity implements OnMapReadyCallback 
         return getRetrofit().create(TourDataApi.class);
     }
 }
-
-
 
 
 
