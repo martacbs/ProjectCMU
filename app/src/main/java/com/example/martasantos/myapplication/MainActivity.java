@@ -22,7 +22,9 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SignIn.setOnClickListener(this);
         GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleApiClient =  new GoogleApiClient.Builder(this).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions).build();
+
 
 
         //Facebook
@@ -163,14 +166,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void updateUI(boolean isLogin, long id_google){
 
-        if (isLogin){
+        if (isLogin) {
 
             Toast.makeText(getApplicationContext(), "Login with google sucessful", Toast.LENGTH_SHORT).show();
 
-            Intent z = new Intent(getApplicationContext(), UserInterests.class);
-            Bundle b = new Bundle();
-            b.putLong("user_id_google",id_google);
 
+            Intent z = new Intent(getApplicationContext(), UserInterests.class);
+
+            Bundle b = new Bundle();
+            b.putLong("user_id_google", id_google);
             z.putExtras(b);
             startActivity(z);
         }

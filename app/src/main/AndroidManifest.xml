@@ -14,8 +14,8 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCSZd4q9vEprtnrw9yIT9R00yZEe1_wfxU"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:value="AIzaSyCSZd4q9vEprtnrw9yIT9R00yZEe1_wfxU" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -24,11 +24,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".interests.UserInterests" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".HorasL" android:parentActivityName=".Menu_Lateral"/>
-        <activity android:name=".login.Login" android:parentActivityName=".MainActivity" />
-        <activity android:name=".register.UserRegister" android:parentActivityName=".MainActivity" />
-        <activity android:name=".evento.CriarEvento" android:parentActivityName=".HorasL" />
+        <activity
+            android:name=".interests.UserInterests"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".HorasL"
+            android:parentActivityName=".Menu_Lateral" />
+        <activity
+            android:name=".login.Login"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".register.UserRegister"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".evento.CriarEvento"
+            android:parentActivityName=".HorasL" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -53,7 +63,8 @@
         <activity
             android:name=".Menu_Lateral"
             android:label="@string/title_activity_menu__lateral"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Sugestoes"></activity>
     </application>
 
 </manifest>

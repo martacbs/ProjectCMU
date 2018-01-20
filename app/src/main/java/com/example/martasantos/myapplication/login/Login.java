@@ -59,6 +59,8 @@ public class Login extends AppCompatActivity {
                         ProcessData p= new ProcessData();
                         p.execute(null, null);
 
+
+
                         Intent d = new Intent(getApplicationContext(), Menu_Lateral.class);
                         startActivity(d);
 
@@ -70,6 +72,8 @@ public class Login extends AppCompatActivity {
 
 
     }
+
+
 
 
     private User verificarUser() {

@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.martasantos.myapplication.Menu_Lateral;
 import com.example.martasantos.myapplication.R;
+import com.example.martasantos.myapplication.Sugestoes;
 import com.example.martasantos.myapplication.database.DbHelper;
 import com.example.martasantos.myapplication.login.Login;
 import com.example.martasantos.myapplication.models.User;
@@ -21,7 +24,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-public class UserInterests extends AppCompatActivity {
+public class UserInterests extends AppCompatActivity implements Parcelable{
 
     CheckBox tecnologia, desporto, moda, musica, escrita, cinema, gastronomia;
     Button submeter;
@@ -66,6 +69,9 @@ public class UserInterests extends AppCompatActivity {
         DbHelper dbHelper = new DbHelper(UserInterests.this);
         SQLiteDatabase db= dbHelper.getWritableDatabase();
 
+
+
+
         // recebe o id que vem do registo de utilizador registo normal
         Long id=getIntent().getLongExtra("user_id",-1);
 
@@ -73,6 +79,7 @@ public class UserInterests extends AppCompatActivity {
             values.put("user_id", id);
             long rowId = db.insert("interests", null, values);
             Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
+
             if (rowId < 0) {
                 throw new Exception("Não foi possível guardar os seus interesses!");
             }
@@ -134,7 +141,16 @@ public class UserInterests extends AppCompatActivity {
         for (String interesse : interesses) {
             insertInteresse(interesse);
         }
+
+        Intent intent = new Intent(getApplicationContext(), Sugestoes.class);
+        Bundle b= new Bundle();
+        b.putStringArrayList("interesses", (ArrayList<String>) interesses);
+        intent.putExtras(b);
+        startActivity(intent);
+
     }
+
+
 
     public List<DbHelper> AdicInt(User user){
         ArrayList<DbHelper> intere = new ArrayList<DbHelper>(10);
@@ -151,6 +167,16 @@ public class UserInterests extends AppCompatActivity {
 
         }
         return intere;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }
 
