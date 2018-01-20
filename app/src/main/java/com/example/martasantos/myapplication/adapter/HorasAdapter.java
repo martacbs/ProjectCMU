@@ -76,9 +76,7 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
     public void onBindViewHolder(HorasAdapter.ViewHolder viewHolder, int position){
         final Horas hora = mHoras.get(position);
 
-
         TextView textView1 = viewHolder.nameEvent;
-
 
         for(int i=0; i<mHoras.size(); i++) {
             if (i == position) {
@@ -91,10 +89,6 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
                 }
             }
         }
-
-
-
-
 
         TextView textView=viewHolder.nameTextView;
         textView.setText(hora.getHora());
@@ -136,8 +130,6 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
             messageButton= (Button) itemView.findViewById(R.id.message_button);
             nameEvent=(TextView)itemView.findViewById(R.id.eventos);
             comeca=(TextView) itemView.findViewById(R.id.comeca);
-
-
         }
     }
 

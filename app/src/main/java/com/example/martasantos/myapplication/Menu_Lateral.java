@@ -2,7 +2,6 @@ package com.example.martasantos.myapplication;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -16,7 +15,7 @@ import android.view.MenuItem;
 import android.widget.CalendarView;
 
 import com.example.martasantos.myapplication.fragments.Calendar;
-
+import com.example.martasantos.myapplication.fragments.Sugestions;
 import com.example.martasantos.myapplication.fragments.About;
 
 public class Menu_Lateral extends AppCompatActivity
@@ -74,11 +73,8 @@ public class Menu_Lateral extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(getApplicationContext(), Sugestoes.class);
-            startActivity(intent);
             return true;
         }
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -95,6 +91,9 @@ public class Menu_Lateral extends AppCompatActivity
         if (id == R.id.nav_first_layout) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_MENU, new Calendar()).commit();
+        } else if (id == R.id.nav_second_layout) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_MENU, new Sugestions()).commit();
         } else if (id == R.id.nav_third_layout) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_MENU, new About()).commit();

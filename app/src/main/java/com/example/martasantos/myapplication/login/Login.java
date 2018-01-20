@@ -31,7 +31,7 @@ public class Login extends AppCompatActivity {
     Button login;
     EditText user, pass;
     private FragmentManager fragmentManager;
-
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,18 +46,22 @@ public class Login extends AppCompatActivity {
 
 
 
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ContentValues values = new ContentValues();
+
                 values.put("username", user.getText().toString());
                 values.put("password", pass.getText().toString());
+
+
 
                 User user = verificarUser();
                     if (user != null) {
 
                         ProcessData p= new ProcessData();
-                        p.execute(null, null);
+                        p.execute(6000000, null);
 
 
 
