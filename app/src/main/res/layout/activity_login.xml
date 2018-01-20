@@ -8,14 +8,14 @@
     tools:context="com.example.martasantos.myapplication.login.Login">
 
 
-    <ImageView
+   <!-- <ImageView
         android:id="@+id/imageView"
         android:layout_width="260dp"
         android:layout_height="200dp"
         android:layout_margin="60dp"
         android:layout_marginRight="50dp"
 
-        android:src="@drawable/agenda" />
+        android:src="@drawable/agenda" />-->
 
 
 <EditText

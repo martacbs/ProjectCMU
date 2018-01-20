@@ -34,7 +34,7 @@ public class Sugestions extends Fragment {
         DbHelper dbHelper = new DbHelper(getActivity());
         SQLiteDatabase db= dbHelper.getWritableDatabase();
 
-
+//db.execSQL();
         myView = inflater.inflate(R.layout.sugestions, container, false);
         //return super.onCreateView(inflater, container, savedInstanceState);
 
