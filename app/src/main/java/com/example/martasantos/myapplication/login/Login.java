@@ -4,9 +4,11 @@ import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,24 +19,34 @@ import android.widget.Toast;
 import com.example.martasantos.myapplication.Menu_Lateral;
 import com.example.martasantos.myapplication.R;
 import com.example.martasantos.myapplication.database.DbHelper;
+import com.example.martasantos.myapplication.fragments.Calendar;
 import com.example.martasantos.myapplication.models.User;
+import com.example.martasantos.myapplication.register.UserRegister;
+
+import java.util.HashMap;
 
 public class Login extends AppCompatActivity {
 
     Button login;
     EditText user, pass;
     private FragmentManager fragmentManager;
-
+    private StayLogin stayLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        stayLogin = new StayLogin(getApplicationContext());
+        if (stayLogin.isLoggedIn()) {
+            startActivity(new Intent(getApplicationContext(), Menu_Lateral.class));
+        }
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         login = (Button) findViewById(R.id.buttonLogin);
         user = (EditText) findViewById(R.id.insertUser);
         pass = (EditText) findViewById(R.id.insertPass);
+
 
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +73,9 @@ public class Login extends AppCompatActivity {
 
 
     }
+
+
+
 
 
 
@@ -100,12 +115,28 @@ public class Login extends AppCompatActivity {
                     Thread.sleep(1000000);
                 }catch (InterruptedException e){
                     e.printStackTrace();
+                    return "not done";
                 }
 
 
 
-            return "done";
+            stayLogin.createLoginSession(user.getText().toString());
+            User user = verificarUser();
+            if (user != null){
+                    startActivity(new Intent(getApplicationContext(), Menu_Lateral.class));
+                    return "done";
+            } else {
+                try {
+                    startActivity(new Intent(getApplicationContext(), UserRegister.class));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                startActivity(new Intent(getApplicationContext(),Menu_Lateral.class));
+                return "login";
+            }
+
         }
+
 
         @Override
         protected void onPostExecute(String s) {
@@ -127,4 +158,6 @@ public class Login extends AppCompatActivity {
             super.onProgressUpdate(values);
         }
     }
+
+
 }

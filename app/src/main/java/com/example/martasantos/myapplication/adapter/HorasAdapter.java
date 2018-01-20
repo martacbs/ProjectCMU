@@ -29,6 +29,8 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
     private List<Horas> mHoras;
     private List<Evento> evento;
     private Evento eventos;
+   private  SharedPreferences preferences;
+    private String eventoName;
 
     public HorasAdapter(Context mContext, List<Horas> mContacts, List<Evento> eventos) {
         this.mContext = mContext;
@@ -60,6 +62,12 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
         View contactView = inflater.inflate(R.layout.item_layout,parent,false);
 
         ViewHolder viewHolder =new ViewHolder(contactView);
+
+
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(getmContext());
+        eventoName = preferences.getString("nomeEvento", "");
+
         return viewHolder;
 
     }
@@ -68,20 +76,26 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
     public void onBindViewHolder(HorasAdapter.ViewHolder viewHolder, int position){
         final Horas hora = mHoras.get(position);
 
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getmContext());
-        String nome_evento = sp.getString("nome_evento","");
-        Log.d("latitude", nome_evento);
+
         TextView textView1 = viewHolder.nameEvent;
-        for(int j=0; j<evento.size(); j++) {
-            for(int i=0; i<mHoras.size(); i++) {
-                if(j == position) {
+
+
+        for(int i=0; i<mHoras.size(); i++) {
+            if (i == position) {
+                for (int j = 0; j < evento.size(); j++) {
+                    if(j==position)
                     eventos = evento.get(position);
-                    if (eventos.getComeca().equals(mHoras.get(i).getHora())) {
-                        textView1.setText(nome_evento);
+                    if (mHoras.get(i).getHora().equals(eventos.getComeca())) {
+                        textView1.setText(eventoName.toString());
                     }
                 }
             }
         }
+
+
+
+
+
         TextView textView=viewHolder.nameTextView;
         textView.setText(hora.getHora());
 

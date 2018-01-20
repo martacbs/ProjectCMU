@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
-//Image_Section = (LinearLayout)findViewById(R.id.image_section);
+
 
     }
 
@@ -165,6 +165,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (isLogin){
 
             Toast.makeText(getApplicationContext(), "Login with google sucessful", Toast.LENGTH_SHORT).show();
+
             Intent z = new Intent(getApplicationContext(), UserInterests.class);
             Bundle b = new Bundle();
             b.putLong("user_id_google",id_google);

@@ -1,7 +1,10 @@
 package com.example.martasantos.myapplication.fragments;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +19,9 @@ import com.example.martasantos.myapplication.R;
 public class Sugestions extends Fragment {
 
     View myView;
+    SharedPreferences sharedPreferences;
+    Context context;
+    private String nome = "";
 
     @Nullable
     @Override
@@ -23,6 +29,9 @@ public class Sugestions extends Fragment {
 
         myView = inflater.inflate(R.layout.sugestions, container, false);
         //return super.onCreateView(inflater, container, savedInstanceState);
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        nome = sharedPreferences.getString("nome", "");
 
     return myView;
     }}

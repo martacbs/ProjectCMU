@@ -35,7 +35,10 @@ public class CriarEvento extends AppCompatActivity {
     EditText nomeEvento, localEvento, comeca, duracao, dataE;
     private String [] lembrete  = new String[]{"1","2","3","4"};
     private Spinner sp;
-    SharedPreferences sharedPreferences;
+   private  SharedPreferences sharedPreferences;
+   private SharedPreferences sharedEventos;
+   private  SharedPreferences.Editor editor;
+    private String nome = "";
 
 
     private void insertEvent() throws Exception{
@@ -68,6 +71,8 @@ public class CriarEvento extends AppCompatActivity {
 
         sp.setAdapter(adapter);
 
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        nome = sharedPreferences.getString("nome", "");
 
         sharedPreferences = getSharedPreferences("Data",MODE_PRIVATE);
         int mes=sharedPreferences.getInt("mes",0);
@@ -116,6 +121,9 @@ public class CriarEvento extends AppCompatActivity {
             }
         });
 
+        sharedEventos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        editor = sharedEventos.edit();
+
         criarEvento=(Button)findViewById(R.id.buttonCriarEvento);
         criarEvento.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,22 +137,12 @@ public class CriarEvento extends AppCompatActivity {
                 }else {
                     try {
                         insertEvent();
-                        /*sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                        SharedPreferences.Editor mEditor = sharedPreferences.edit();
-                        mEditor.putString("nomeEvento", nomeEvento.getText().toString());
-                        mEditor.commit();*/
 
-                        /*sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                        SharedPreferences.Editor mEditor = sharedPreferences.edit();
-                        mEditor.putString("NomeEvento", nomeEvento.getText().toString());
-                        mEditor.commit();*/
+                        editor.putString("nomeEvento", nomeEvento.getText().toString());
+                        editor.commit();
 
                         Intent d = new Intent(getApplicationContext(), HorasL.class);
 
-
-                       /* Bundle b = new Bundle();
-                        b.putString("nomeEvento", nomeEvento.getText().toString());
-                        d.putExtras(b);*/
                         startActivity(d);
                         addNotificationToEvent();
 

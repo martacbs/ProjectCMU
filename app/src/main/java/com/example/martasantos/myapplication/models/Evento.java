@@ -11,6 +11,7 @@ public class Evento {
     private String local;
     private String duracao;
     private String lembrete;
+    private String data;
 
     public String getNome() {
         return nome;
@@ -18,6 +19,14 @@ public class Evento {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public String getComeca() {
@@ -44,6 +53,7 @@ public class Evento {
         this.local = local;
     }
 
+
     public String getDuracao() {
         return duracao;
     }
@@ -60,9 +70,12 @@ public class Evento {
         this.lembrete = lembrete;
     }
 
-    public Evento(String nome, String comeca, int id, String local, String duracao, String lembrete) {
+
+
+    public Evento(String nome, String data, String comeca, int id, String local, String duracao, String lembrete) {
 
         this.nome = nome;
+        this.data = data;
         this.comeca = comeca;
         this.id = id;
         this.local = local;
