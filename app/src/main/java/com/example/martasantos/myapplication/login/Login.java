@@ -3,6 +3,7 @@ package com.example.martasantos.myapplication.login;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -30,17 +31,13 @@ public class Login extends AppCompatActivity {
     Button login;
     EditText user, pass;
     private FragmentManager fragmentManager;
-    private StayLogin stayLogin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        stayLogin = new StayLogin(getApplicationContext());
-        if (stayLogin.isLoggedIn()) {
-            startActivity(new Intent(getApplicationContext(), Menu_Lateral.class));
-        }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         login = (Button) findViewById(R.id.buttonLogin);
@@ -61,7 +58,7 @@ public class Login extends AppCompatActivity {
 
                         ProcessData p= new ProcessData();
                         p.execute(null, null);
-                        //Toast.makeText(Login.this, "Login suceful", Toast.LENGTH_LONG).show();
+
                         Intent d = new Intent(getApplicationContext(), Menu_Lateral.class);
                         startActivity(d);
 
@@ -73,10 +70,6 @@ public class Login extends AppCompatActivity {
 
 
     }
-
-
-
-
 
 
     private User verificarUser() {
@@ -111,32 +104,14 @@ public class Login extends AppCompatActivity {
         @Override
         protected String doInBackground(Integer... integers) {
 
-                try {
-                    Thread.sleep(1000000);
-                }catch (InterruptedException e){
-                    e.printStackTrace();
-                    return "not done";
-                }
+            try {
+                Thread.sleep(1000000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
 
-
-
-            stayLogin.createLoginSession(user.getText().toString());
-            User user = verificarUser();
-            if (user != null){
-                    startActivity(new Intent(getApplicationContext(), Menu_Lateral.class));
-                    return "done";
-            } else {
-                try {
-                    startActivity(new Intent(getApplicationContext(), UserRegister.class));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                startActivity(new Intent(getApplicationContext(),Menu_Lateral.class));
-                return "login";
             }
-
+            return "not done";
         }
-
 
         @Override
         protected void onPostExecute(String s) {
