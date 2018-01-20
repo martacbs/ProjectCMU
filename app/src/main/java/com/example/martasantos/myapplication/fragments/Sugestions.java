@@ -30,7 +30,7 @@ public class Sugestions extends Fragment {
         myView = inflater.inflate(R.layout.sugestions, container, false);
         //return super.onCreateView(inflater, container, savedInstanceState);
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         nome = sharedPreferences.getString("nome", "");
 
     return myView;
