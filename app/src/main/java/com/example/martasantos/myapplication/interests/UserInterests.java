@@ -4,8 +4,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +13,6 @@ import android.widget.Toast;
 
 import com.example.martasantos.myapplication.Menu_Lateral;
 import com.example.martasantos.myapplication.R;
-import com.example.martasantos.myapplication.Sugestoes;
 import com.example.martasantos.myapplication.database.DbHelper;
 import com.example.martasantos.myapplication.login.Login;
 import com.example.martasantos.myapplication.models.User;
@@ -24,7 +21,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-public class UserInterests extends AppCompatActivity implements Parcelable{
+public class UserInterests extends AppCompatActivity {
 
     CheckBox tecnologia, desporto, moda, musica, escrita, cinema, gastronomia;
     Button submeter;
@@ -49,11 +46,11 @@ public class UserInterests extends AppCompatActivity implements Parcelable{
                     e.printStackTrace();
                 }
 
-                Long id_google=getIntent().getLongExtra("user_id_google",-1);
-                if(id_google>0){
+                Long id_google = getIntent().getLongExtra("user_id_google", -1);
+                if (id_google > 0) {
                     Intent h = new Intent(getApplicationContext(), Menu_Lateral.class);
                     startActivity(h);
-                }else {
+                } else {
                     Intent j = new Intent(getApplicationContext(), Login.class);
                     startActivity(j);
                 }
@@ -61,21 +58,19 @@ public class UserInterests extends AppCompatActivity implements Parcelable{
         });
     }
 
-    private void insertInteresse( String valor) throws Exception {
+    private void insertInteresse(String valor) throws Exception {
 
         ContentValues values = new ContentValues();
-        values.put("interesses",valor);
+        values.put("interesses", valor);
 
         DbHelper dbHelper = new DbHelper(UserInterests.this);
-        SQLiteDatabase db= dbHelper.getWritableDatabase();
-
-
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
 
         // recebe o id que vem do registo de utilizador registo normal
-        Long id=getIntent().getLongExtra("user_id",-1);
+        Long id = getIntent().getLongExtra("user_id", -1);
 
-        if(id>0) {
+        if (id > 0) {
             values.put("user_id", id);
             long rowId = db.insert("interests", null, values);
             Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
@@ -86,8 +81,8 @@ public class UserInterests extends AppCompatActivity implements Parcelable{
         }
 
         // recebe o id que vem do registo de utilizador registo conta google
-        Long id_google=getIntent().getLongExtra("user_id_google",-1);
-        if(id_google>0) {
+        Long id_google = getIntent().getLongExtra("user_id_google", -1);
+        if (id_google > 0) {
 
             values.put("user_id", id_google);
             long rowId = db.insert("interests", null, values);
@@ -99,7 +94,7 @@ public class UserInterests extends AppCompatActivity implements Parcelable{
         }
 
 
-            db.close();
+        db.close();
     }
 
     public void Interesses() throws Exception {
@@ -142,42 +137,28 @@ public class UserInterests extends AppCompatActivity implements Parcelable{
             insertInteresse(interesse);
         }
 
-        Intent intent = new Intent(getApplicationContext(), Sugestoes.class);
-        Bundle b= new Bundle();
-        b.putStringArrayList("interesses", (ArrayList<String>) interesses);
-        intent.putExtras(b);
-        startActivity(intent);
+
 
     }
 
 
-
-    public List<DbHelper> AdicInt(User user){
+    public List<DbHelper> AdicInt(User user) {
         ArrayList<DbHelper> intere = new ArrayList<DbHelper>(10);
         DbHelper dbHelper = new DbHelper(UserInterests.this);
 
-        SQLiteDatabase db= dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         String SQL = "SELECT * FROM TABLE interests WHERE user_id=?";
         Cursor cursor = db.rawQuery(SQL, new String[]{String.valueOf(user.getId())});
 
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
 
-           String interesse = cursor.getString(1);
+            String interesse = cursor.getString(1);
 
         }
         return intere;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
 }
 
 

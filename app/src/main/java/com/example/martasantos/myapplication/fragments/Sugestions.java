@@ -21,25 +21,11 @@ import com.example.martasantos.myapplication.register.UserRegister;
 
 public class Sugestions extends Fragment {
 
-    View myView;
-    SharedPreferences sharedPreferences;
-    Context context;
-    private String nome = "";
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
 
-        DbHelper dbHelper = new DbHelper(getActivity());
-        SQLiteDatabase db= dbHelper.getWritableDatabase();
-
-//db.execSQL();
-        myView = inflater.inflate(R.layout.sugestions, container, false);
-        //return super.onCreateView(inflater, container, savedInstanceState);
-
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        nome = sharedPreferences.getString("nome", "");
-
-    return myView;
     }}
