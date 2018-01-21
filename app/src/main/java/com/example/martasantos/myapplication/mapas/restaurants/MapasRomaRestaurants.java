@@ -116,6 +116,7 @@ public class MapasRomaRestaurants extends AppCompatActivity implements OnMapRead
         /**
          * API onde se vai buscar a informação para ser disponibilizada em mapas
          */
+    }
 
     private Retrofit getRetrofit() {
         return new Retrofit.Builder()

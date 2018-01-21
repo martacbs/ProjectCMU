@@ -11,8 +11,8 @@
    <ImageView
         android:id="@+id/imageView"
        android:layout_marginTop="20dp"
-        android:layout_width="260dp"
-        android:layout_height="200dp"
+        android:layout_width="500dp"
+        android:layout_height="300dp"
         android:layout_marginLeft="50dp"
        android:layout_marginBottom="20dp"
         android:src="@drawable/x" />
@@ -20,18 +20,20 @@
 
 <EditText
         android:id="@+id/insertUser"
+    android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:ems="10"
         android:hint="Username"
+
         android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/insertPass"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:ems="10"
@@ -41,11 +43,11 @@
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:text="Login"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:layout_marginTop="16dp"
         android:clickable="true"
         android:padding="16dp"
