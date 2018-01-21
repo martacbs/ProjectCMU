@@ -125,7 +125,6 @@ public class UserInterests extends AppCompatActivity {
         if (tecnologia.isChecked()) {
             interesses.add("Tecnologia");
         }
-
         if (desporto.isChecked()) {
             interesses.add("Desporto");
         }
