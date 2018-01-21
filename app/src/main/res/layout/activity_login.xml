@@ -7,16 +7,14 @@
     android:orientation="vertical"
     tools:context="com.example.martasantos.myapplication.login.Login">
 
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+
    <ImageView
         android:id="@+id/imageView"
+       android:layout_marginTop="20dp"
         android:layout_width="260dp"
         android:layout_height="200dp"
-        android:layout_margin="60dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+       android:layout_marginBottom="20dp"
         android:src="@drawable/x" />
 
 
@@ -24,7 +22,6 @@
         android:id="@+id/insertUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:ems="10"
@@ -54,5 +51,4 @@
         android:padding="16dp"
         android:textAllCaps="false"
         />
-    </ScrollView>
 </LinearLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">X Agenda</string>
     <string name="facebook_app_id">922406981270789</string>
     <string name="fb_login_protocol_scheme">fb922406981270789</string>
     <string name="title_activity_navigation_drawer">NavigationDrawer</string>
@@ -8,7 +8,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="sugestions">Sugestões</string>
-    <string name="title_activity_menu_navigation">MenuNavigation</string>
-    <string name="title_activity_menu_drawer">MenuDrawer</string>
-    <string name="title_activity_menu__lateral">Menu_Lateral</string>
+    <string name="title_activity_menu_navigation">X Agenda</string>
+    <string name="title_activity_menu_drawer">X Agenda</string>
+    <string name="title_activity_menu__lateral">X Agenda</string>
 </resources>

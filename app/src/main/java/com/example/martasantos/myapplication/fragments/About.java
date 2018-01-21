@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.martasantos.myapplication.R;
@@ -55,6 +56,17 @@ public class About extends Fragment {
                 x.setData(Uri.parse("mailto:xAgenda@android.com"));
                 x.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(x);
+            }
+        });
+
+        ImageView img = (ImageView)myView.findViewById(R.id.mapaFelgueiras);
+        img.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://www.google.pt/maps/place/ESTG+-+Escola+Superior+de+Tecnologia+e+Gestão+%7C+Politécnico+do+Porto/@41.3669406,-8.1951544,19z/data=!4m5!3m4!1s0xd24ebb9287835e1:0xca919ba04ec42efc!8m2!3d41.3668491!4d-8.1947272?hl=pt-PT"));
+                startActivity(intent);
             }
         });
     return myView;}}

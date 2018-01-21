@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/numero"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="260dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/xagenda" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-         />
+        android:orientation="horizontal"
+        android:layout_marginBottom="50dp">
 
 
     <Button
@@ -18,8 +27,6 @@
         android:layout_width="180dp"
         android:layout_height="60dp"
         android:layout_marginLeft="7dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
         android:text="Contacte-nos"
         />
 
@@ -27,11 +34,25 @@
         android:id="@+id/botaoEmail"
         android:layout_width="180dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="7dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
         android:text="Envie-nos um email"
         />
 
+    </LinearLayout>
 
+    <TextView
+        android:id="@+id/visita"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:text="Visite-nos:" />
+
+    <ImageView
+        android:id="@+id/mapaFelgueiras"
+        android:layout_width="250dp"
+        android:layout_height="125dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/mapafelgueiras" />
 </LinearLayout>

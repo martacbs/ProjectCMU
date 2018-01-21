@@ -80,7 +80,7 @@ public class UserRegister extends AppCompatActivity {
                         long userid = insertUser();
                             Toast.makeText(getApplicationContext(), "register sucessful", Toast.LENGTH_SHORT).show();
                             Intent d = new Intent(getApplicationContext(), UserInterests.class);
-                            //enviar o id para os interesses
+                            //enviar o id para os Interesses
                             Bundle b = new Bundle();
                             b.putLong("user_id",userid);
                             d.putExtras(b);

@@ -50,6 +50,7 @@ public class MapasAmesterdamAttractions extends AppCompatActivity implements OnM
                     @Override
                     public void onResponse(Call<List<POI>> call, Response<List<POI>> response){
                         List<POI> points=response.body();
+                        zoomToLocationAmsterdamAttractions();
 
                         addMarkerAmsterdamAttractions(points);
                     }
@@ -68,8 +69,8 @@ public class MapasAmesterdamAttractions extends AppCompatActivity implements OnM
 
             Marker marker = mGoogleMap.addMarker(new MarkerOptions()
                     .position(latLng)
-                    .title(poi.get(i).getCategory())
-                    .snippet(poi.get(i).getDetails()));
+                    .title(poi.get(i).getName())
+                    .snippet(poi.get(i).getAddress()));
         }
         mGoogleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
 
@@ -81,6 +82,7 @@ public class MapasAmesterdamAttractions extends AppCompatActivity implements OnM
         });
 
     }
+
 
 
     private void zoomToLocationAmsterdamAttractions(){

@@ -12,7 +12,11 @@
         android:text=""
          />
 
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="50dp">
     <Button
         android:id="@+id/botaoChamada"
         android:layout_width="180dp"
@@ -32,6 +36,20 @@
         android:layout_marginTop="10dp"
         android:text="Envie-nos um email"
         />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/visita"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:text="Visite-nos:" />
 
+    <ImageView
+        android:id="@+id/mapaFelgueiras"
+        android:layout_width="250dp"
+        android:layout_height="125dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/mapafelgueiras" />
 
 </LinearLayout>

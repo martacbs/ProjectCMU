@@ -44,9 +44,6 @@ public class Login extends AppCompatActivity {
         user = (EditText) findViewById(R.id.insertUser);
         pass = (EditText) findViewById(R.id.insertPass);
 
-
-
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

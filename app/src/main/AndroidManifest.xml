@@ -64,7 +64,19 @@
             android:name=".Menu_Lateral"
             android:label="@string/title_activity_menu__lateral"
             android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity android:name=".interests.Cidades" android:parentActivityName=".interests.Interesses" />
+        <activity android:name=".interests.CidadesRestaurantes" android:parentActivityName=".interests.UserInterests"/>
+        <activity android:name=".interests.Interesses" android:parentActivityName=".Menu_Lateral"></activity>
+        <activity android:name=".mapas.attractions.MapasAmesterdamAttractions"></activity>
+        <activity android:name=".mapas.attractions.MapasLondresAttractions"></activity>
+        <activity android:name=".mapas.attractions.MapasParisAttractions"></activity>
+        <activity android:name=".mapas.restaurants.MapasAmsterdamRestaurants"></activity>
+        <activity android:name=".mapas.restaurants.MapasBarcelonaRestaurants"></activity>
+        <activity android:name=".mapas.restaurants.MapasBerlimRestaurants"></activity>
+        <activity android:name=".mapas.restaurants.MapasDubaiRestaurants"></activity>
+        <activity android:name=".mapas.restaurants.MapasLondresRestaurants"></activity>
+        <activity android:name=".mapas.restaurants.MapasParisRestaurants"></activity>
+        <activity android:name=".mapas.restaurants.MapasRomaRestaurants"></activity>
     </application>
 
 </manifest>

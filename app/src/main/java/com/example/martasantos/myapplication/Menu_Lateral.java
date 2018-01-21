@@ -2,6 +2,7 @@ package com.example.martasantos.myapplication;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -17,6 +18,7 @@ import android.widget.CalendarView;
 import com.example.martasantos.myapplication.fragments.Calendar;
 import com.example.martasantos.myapplication.fragments.Sugestions;
 import com.example.martasantos.myapplication.fragments.About;
+import com.example.martasantos.myapplication.interests.Interesses;
 
 public class Menu_Lateral extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,7 +31,6 @@ public class Menu_Lateral extends AppCompatActivity
         setContentView(R.layout.activity_menu__lateral);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -73,6 +74,8 @@ public class Menu_Lateral extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent interesses=new Intent(getApplicationContext(), Interesses.class);
+            startActivity(interesses);
             return true;
         }
 

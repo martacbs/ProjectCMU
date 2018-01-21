@@ -25,7 +25,7 @@ public class UserInterests extends AppCompatActivity {
 
     CheckBox tecnologia, desporto, moda, musica, escrita, cinema, gastronomia;
     Button submeter;
-    //fazer o metodo como se fez para os interesses ir buscar o id de util GoogleSignInResult result;
+    //fazer o metodo como se fez para os Interesses ir buscar o id de util GoogleSignInResult result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class UserInterests extends AppCompatActivity {
     private void insertInteresse(String valor) throws Exception {
 
         ContentValues values = new ContentValues();
-        values.put("interesses", valor);
+        values.put("Interesses", valor);
 
         DbHelper dbHelper = new DbHelper(UserInterests.this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -76,7 +76,7 @@ public class UserInterests extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
 
             if (rowId < 0) {
-                throw new Exception("Não foi possível guardar os seus interesses!");
+                throw new Exception("Não foi possível guardar os seus Interesses!");
             }
         }
 
@@ -89,7 +89,7 @@ public class UserInterests extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
 
             if (rowId < 0) {
-                throw new Exception("Não foi possível guardar os seus interesses!");
+                throw new Exception("Não foi possível guardar os seus Interesses!");
             }
         }
 
