@@ -35,6 +35,8 @@ public class MapasAmesterdamAttractions extends AppCompatActivity implements OnM
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mMapFragment.getMapAsync(this);
     }

@@ -35,6 +35,7 @@ public class MapasRomaRestaurants extends AppCompatActivity implements OnMapRead
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mMapFragment.getMapAsync(this);
     }
@@ -50,7 +51,7 @@ public class MapasRomaRestaurants extends AppCompatActivity implements OnMapRead
                     @Override
                     public void onResponse(Call<List<POI>> call, Response<List<POI>> response){
                         List<POI> points=response.body();
-                        zoomToLocation();
+                        zoomToLocationRomaRestaurants();
                         addMarkerRomaRestaurants(points);
                     }
                     @Override
@@ -90,15 +91,6 @@ public class MapasRomaRestaurants extends AppCompatActivity implements OnMapRead
     }
 
 
-    private void zoomToLocation(){
-        LatLng latLng=new LatLng(0,-0);
-
-        CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latLng,18);
-
-        mGoogleMap.animateCamera(cameraUpdate);
-
-
-    }
 
     private Retrofit getRetrofit(){
         return new Retrofit.Builder()

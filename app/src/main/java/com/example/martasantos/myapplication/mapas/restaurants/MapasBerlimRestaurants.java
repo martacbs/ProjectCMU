@@ -35,6 +35,7 @@ public class MapasBerlimRestaurants extends AppCompatActivity implements OnMapRe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mMapFragment.getMapAsync(this);
     }

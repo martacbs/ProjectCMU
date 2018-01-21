@@ -35,6 +35,7 @@ public class MapasDubaiRestaurants extends AppCompatActivity implements OnMapRea
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mMapFragment.getMapAsync(this);
     }
