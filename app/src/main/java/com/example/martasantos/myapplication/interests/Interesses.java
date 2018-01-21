@@ -8,22 +8,30 @@ import android.widget.Button;
 
 import com.example.martasantos.myapplication.R;
 
+
+/**
+ * Classe onde o utilizador escolhe se deseja ver as atrações ou restaurantes
+ */
+
 public class Interesses extends AppCompatActivity {
 
-    Button atracoes,restaurantes;
+    Button atracoes, restaurantes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interesses);
+
+        //ao clicar na seta no canto superior esquerdo retorna para a atividade anterior
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        atracoes=(Button)findViewById(R.id.Atracoes);
-        restaurantes=(Button)findViewById(R.id.Restaurantes);
+
+        atracoes = (Button) findViewById(R.id.Atracoes);
+        restaurantes = (Button) findViewById(R.id.Restaurantes);
 
         atracoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),Cidades.class);
+                Intent intent = new Intent(getApplicationContext(), Cidades.class);
                 startActivity(intent);
             }
         });
@@ -31,7 +39,7 @@ public class Interesses extends AppCompatActivity {
         restaurantes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent restaurante=new Intent(getApplicationContext(),CidadesRestaurantes.class);
+                Intent restaurante = new Intent(getApplicationContext(), CidadesRestaurantes.class);
                 startActivity(restaurante);
             }
         });

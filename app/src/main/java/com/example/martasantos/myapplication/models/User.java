@@ -1,7 +1,7 @@
 package com.example.martasantos.myapplication.models;
 
 /**
- * Created by martasantos on 31/12/17.
+ * Classe User
  */
 
 public class User {

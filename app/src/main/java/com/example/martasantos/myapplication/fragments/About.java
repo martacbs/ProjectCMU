@@ -18,11 +18,12 @@ import android.widget.TextView;
 import com.example.martasantos.myapplication.R;
 
 /**
- * Created by martasantos on 18/01/18.
+ * Classe onde possui informações acerca da aplicação como contactos e onde nos poderá encontrar
+ *
  */
 
 public class About extends Fragment {
-    Button telefone,email;
+    Button telefone, email;
     View myView;
     TextView e1;
 
@@ -31,21 +32,24 @@ public class About extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         myView = inflater.inflate(R.layout.about, container, false);
+        telefone = (Button) myView.findViewById(R.id.botaoChamada);
+        email = (Button) myView.findViewById(R.id.botaoEmail);
+        final String num = "913212212";
 
-        telefone=(Button)myView.findViewById(R.id.botaoChamada);
-        email=(Button)myView.findViewById(R.id.botaoEmail);
-        e1 = (TextView) myView.findViewById(R.id.numero);
-        final String num="913212212";
-
+        /**
+         * botão que reencaminha o utilizador para as chamas, tendo já um número predefinido
+         */
         telefone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent (Intent.ACTION_VIEW, Uri.parse("tel:"+num));
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("tel:" + num));
                 startActivity(i);
             }
         });
 
-
+        /**
+        * botão que reencaminha o utilizador para o email para enviar email, ao email predefinido
+        */
         email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,9 +63,13 @@ public class About extends Fragment {
             }
         });
 
-        ImageView img = (ImageView)myView.findViewById(R.id.mapaFelgueiras);
-        img.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        /**
+         * cria uma hiperligação da imagem que a reencaminha para o GoogleMaps e mostra
+         * a Escola Superior de Tecnologia e Gestão
+         */
+        ImageView img = (ImageView) myView.findViewById(R.id.mapaFelgueiras);
+        img.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
@@ -69,4 +77,6 @@ public class About extends Fragment {
                 startActivity(intent);
             }
         });
-    return myView;}}
+        return myView;
+    }
+}

@@ -24,9 +24,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by martasantos on 17/01/18.
+ * Classe onde é mostado em mapa os restaurantes na cidade de Berlin
  */
-
 public class MapasBerlimRestaurants extends AppCompatActivity implements OnMapReadyCallback {
 
     private SupportMapFragment mMapFragment;
@@ -35,17 +34,20 @@ public class MapasBerlimRestaurants extends AppCompatActivity implements OnMapRe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
+
+        //ao clicar na seta no canto superior esquerdo retorna para a atividade anterior
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mMapFragment.getMapAsync(this);
     }
 
+    /**
+     * Apresenta os restaurantes existentes na cidade de Berlim
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
 
-
-        //zoomToLocationAmsterdam();
         getApi().getListPointsOfInterest("Berlin", "restaurant", "Restaurant")
                 .enqueue(new Callback<List<POI>>(){
                     @Override
@@ -63,6 +65,10 @@ public class MapasBerlimRestaurants extends AppCompatActivity implements OnMapRe
     }
 
 
+    /**
+     * Adiciona no mapa os markers dos restaurantes
+     * @param poi retorna os restaurantes do local
+     */
     private void addMarkerBerlimRestaurants(List<POI> poi){
 
         for(int i=0; i<poi.size();i++) {
@@ -83,6 +89,9 @@ public class MapasBerlimRestaurants extends AppCompatActivity implements OnMapRe
 
     }
 
+    /**
+     * permite-nos mostrar no mapa a cidade de Berlim de acordo com as coordenadas
+     */
     private void zoomToLocationBerlimRestaurants(){
         LatLng latLng=new LatLng(52.5065116,13.1438681);
 
@@ -93,7 +102,9 @@ public class MapasBerlimRestaurants extends AppCompatActivity implements OnMapRe
 
     }
 
-
+    /**
+     * permite fazer o zoom do local
+     */
     private void zoomToLocation(){
         LatLng latLng=new LatLng(0,-0);
 
@@ -104,6 +115,9 @@ public class MapasBerlimRestaurants extends AppCompatActivity implements OnMapRe
 
     }
 
+    /**
+     * API onde se vai buscar a informação para ser disponibilizada em mapas
+     */
     private Retrofit getRetrofit(){
         return new Retrofit.Builder()
                 .baseUrl("http://tour-pedia.org/api/")

@@ -24,7 +24,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by martasantos on 17/01/18.
+ * Classe onde é mostado em mapa os restaurantes na cidade de Paris
  */
 
 public class MapasParisRestaurants extends AppCompatActivity implements OnMapReadyCallback {
@@ -35,17 +35,20 @@ public class MapasParisRestaurants extends AppCompatActivity implements OnMapRea
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
+
+        //ao clicar na seta no canto superior esquerdo retorna para a atividade anterior
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mMapFragment.getMapAsync(this);
     }
 
+    /**
+     * Apresenta os restaurantes existentes na cidade de Paris
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
 
-
-        //zoomToLocationAmsterdam();
         getApi().getListPointsOfInterest("Paris", "restaurant", "Restaurant")
                 .enqueue(new Callback<List<POI>>(){
                     @Override
@@ -63,6 +66,10 @@ public class MapasParisRestaurants extends AppCompatActivity implements OnMapRea
     }
 
 
+    /**
+     * Adiciona no mapa os markers dos restaurantes
+     * @param poi retorna os restaurantes do local
+     */
     private void addMarkerParisRestaurants(List<POI> poi){
 
         for(int i=0; i<poi.size();i++) {
@@ -83,8 +90,9 @@ public class MapasParisRestaurants extends AppCompatActivity implements OnMapRea
 
     }
 
-
-
+    /**
+     * permite-nos mostrar no mapa a cidade de Paris de acordo com as coordenadas
+     */
     private void zoomToLocationParisRestaurants(){
         LatLng latLng=new LatLng(48.8587737,2.2066338);
 
@@ -95,7 +103,9 @@ public class MapasParisRestaurants extends AppCompatActivity implements OnMapRea
 
     }
 
-
+    /**
+     * permite fazer o zoom do local
+     */
     private void zoomToLocation(){
         LatLng latLng=new LatLng(0,-0);
 
@@ -106,6 +116,9 @@ public class MapasParisRestaurants extends AppCompatActivity implements OnMapRea
 
     }
 
+    /**
+     * API onde se vai buscar a informação para ser disponibilizada em mapas
+     */
     private Retrofit getRetrofit(){
         return new Retrofit.Builder()
                 .baseUrl("http://tour-pedia.org/api/")

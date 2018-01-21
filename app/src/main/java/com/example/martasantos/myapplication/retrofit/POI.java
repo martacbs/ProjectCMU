@@ -1,5 +1,8 @@
 package com.example.martasantos.myapplication.retrofit;
 
+/**
+ * Pontos de Interesse que serão obtidos através do retrofit
+ */
 public class POI {
     private String name;
     private String address;

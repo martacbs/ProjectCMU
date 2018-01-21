@@ -21,17 +21,20 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+/**
+ * Classe onde o utilizador define os seus interesses e os mesmos são guardados na base de dados
+ */
 public class UserInterests extends AppCompatActivity {
 
     CheckBox tecnologia, desporto, moda, musica, escrita, cinema, gastronomia;
     Button submeter;
-    //fazer o metodo como se fez para os Interesses ir buscar o id de util GoogleSignInResult result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_interests);
 
+        //ao clicar na seta no canto superior esquerdo retorna para a atividade anterior
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         submeter = (Button) findViewById(R.id.submeter);
 
@@ -46,6 +49,7 @@ public class UserInterests extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+                //recebe o id utilizador da google para atribuir os interesses aquele utilizador
                 Long id_google = getIntent().getLongExtra("user_id_google", -1);
                 if (id_google > 0) {
                     Intent h = new Intent(getApplicationContext(), Menu_Lateral.class);
@@ -58,6 +62,11 @@ public class UserInterests extends AppCompatActivity {
         });
     }
 
+    /**
+     * Insere os interesses do utilizador na base de dados
+     * @param valor interesses do utilizador
+     * @throws Exception se não for possível guardar os interesses do utilizador
+     */
     private void insertInteresse(String valor) throws Exception {
 
         ContentValues values = new ContentValues();
@@ -67,7 +76,7 @@ public class UserInterests extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
 
-        // recebe o id que vem do registo de utilizador registo normal
+        // recebe o id que vem do registo de utilizador registo normal para atribuir os interesses aquele utilizador
         Long id = getIntent().getLongExtra("user_id", -1);
 
         if (id > 0) {
@@ -97,6 +106,10 @@ public class UserInterests extends AppCompatActivity {
         db.close();
     }
 
+    /**
+     * o utilizador escolhe através de uma Checkbox os seus interesses
+     * @throws Exception se não for possível guardar os interesses
+     */
     public void Interesses() throws Exception {
 
         List<String> interesses = new ArrayList<>();
@@ -137,11 +150,13 @@ public class UserInterests extends AppCompatActivity {
             insertInteresse(interesse);
         }
 
-
-
     }
 
-
+    /**
+     * Adicionar os intesses
+     * @param user para saber a que user se refere
+     * @return os interesses
+     */
     public List<DbHelper> AdicInt(User user) {
         ArrayList<DbHelper> intere = new ArrayList<DbHelper>(10);
         DbHelper dbHelper = new DbHelper(UserInterests.this);

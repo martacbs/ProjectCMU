@@ -24,7 +24,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by martasantos on 17/01/18.
+ * Classe onde é mostado em mapa as atrações na cidade de Amesterdão
  */
 
 public class MapasAmesterdamAttractions extends AppCompatActivity implements OnMapReadyCallback {
@@ -36,24 +36,24 @@ public class MapasAmesterdamAttractions extends AppCompatActivity implements OnM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
 
+        //ao clicar na seta no canto superior esquerdo retorna para a atividade anterior
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mMapFragment.getMapAsync(this);
     }
 
+    /**
+     * Apresenta as atrações existentes na cidade de Amesterdão
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
-
-
-        //zoomToLocationAmsterdam();
         getApi().getListPointsOfInterest("Amsterdam", "attraction", "science")
                 .enqueue(new Callback<List<POI>>(){
                     @Override
                     public void onResponse(Call<List<POI>> call, Response<List<POI>> response){
                         List<POI> points=response.body();
                         zoomToLocationAmsterdamAttractions();
-
                         addMarkerAmsterdamAttractions(points);
                     }
                     @Override
@@ -65,6 +65,10 @@ public class MapasAmesterdamAttractions extends AppCompatActivity implements OnM
     }
 
 
+    /**
+     * Adiciona no mapa os markers das atrações
+     * @param poi retorna as atracoes do local
+     */
     private void addMarkerAmsterdamAttractions(List<POI> poi){
         for(int i=0; i<poi.size();i++) {
             LatLng latLng = new LatLng(poi.get(i).getLat(), poi.get(i).getLng());
@@ -85,21 +89,27 @@ public class MapasAmesterdamAttractions extends AppCompatActivity implements OnM
 
     }
 
-
-
+    /**
+     * permite-nos mostrar no mapa a cidade de Amsterdão de acordo com as coordenadas
+     */
     private void zoomToLocationAmsterdamAttractions(){
         LatLng latLng=new LatLng(52.3545649,4.7581975);
         CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latLng,18);
         mGoogleMap.animateCamera(cameraUpdate);
     }
 
-
+    /**
+     * permite fazer o zoom do local
+     */
     private void zoomToLocation(){
         LatLng latLng=new LatLng(4,-2);
         CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latLng,18);
         mGoogleMap.animateCamera(cameraUpdate);
     }
 
+    /**
+     * API onde se vai buscar a informação para ser disponibilizada em mapas
+     */
     private Retrofit getRetrofit(){
         return new Retrofit.Builder()
                 .baseUrl("http://tour-pedia.org/api/")

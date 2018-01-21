@@ -1,7 +1,7 @@
 package com.example.martasantos.myapplication.models;
 
 /**
- * Created by vieir on 16/01/2018.
+ * Classe Evento
  */
 
 public class Evento {

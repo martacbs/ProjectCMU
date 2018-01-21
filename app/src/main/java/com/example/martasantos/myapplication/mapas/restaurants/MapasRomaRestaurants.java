@@ -24,47 +24,57 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by martasantos on 17/01/18.
+ * Classe onde é mostado em mapa os restaurantes na cidade de Roma
  */
 
 public class MapasRomaRestaurants extends AppCompatActivity implements OnMapReadyCallback {
 
     private SupportMapFragment mMapFragment;
     private GoogleMap mGoogleMap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
+
+        //ao clicar na seta no canto superior esquerdo retorna para a atividade anterior
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mMapFragment.getMapAsync(this);
     }
 
+    /**
+     * Apresenta os restaurantes existentes na cidade de Roma
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
 
-
-        //zoomToLocationAmsterdam();
         getApi().getListPointsOfInterest("Rome", "restaurant", "Restaurant")
-                .enqueue(new Callback<List<POI>>(){
+                .enqueue(new Callback<List<POI>>() {
                     @Override
-                    public void onResponse(Call<List<POI>> call, Response<List<POI>> response){
-                        List<POI> points=response.body();
+                    public void onResponse(Call<List<POI>> call, Response<List<POI>> response) {
+                        List<POI> points = response.body();
                         zoomToLocationRomaRestaurants();
                         addMarkerRomaRestaurants(points);
                     }
+
                     @Override
-                    public void onFailure(Call<List<POI>> call, Throwable t){
+                    public void onFailure(Call<List<POI>> call, Throwable t) {
 
                     }
                 });
     }
 
 
-    private void addMarkerRomaRestaurants(List<POI> poi){
+    /**
+     * Adiciona no mapa os markers dos restaurantes
+     *
+     * @param poi retorna os restaurantes do local
+     */
+    private void addMarkerRomaRestaurants(List<POI> poi) {
 
-        for(int i=0; i<poi.size();i++) {
+        for (int i = 0; i < poi.size(); i++) {
             LatLng latLng = new LatLng(poi.get(i).getLat(), poi.get(i).getLng());
 
             Marker marker = mGoogleMap.addMarker(new MarkerOptions()
@@ -82,24 +92,39 @@ public class MapasRomaRestaurants extends AppCompatActivity implements OnMapRead
 
     }
 
-    private void zoomToLocationRomaRestaurants(){
-        LatLng latLng=new LatLng(41.9099856,12.3955708);
+    /**
+     * permite-nos mostrar no mapa a cidade de Roma de acordo com as coordenadas
+     */
+    private void zoomToLocationRomaRestaurants() {
+        LatLng latLng = new LatLng(41.9099856, 12.3955708);
 
-        CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latLng,18);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 18);
 
         mGoogleMap.animateCamera(cameraUpdate);
     }
 
+    /**
+     * permite fazer o zoom do local
+     */
+    private void zoomToLocation() {
+        LatLng latLng = new LatLng(0, -0);
 
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 18);
 
-    private Retrofit getRetrofit(){
+        mGoogleMap.animateCamera(cameraUpdate);
+
+        /**
+         * API onde se vai buscar a informação para ser disponibilizada em mapas
+         */
+
+    private Retrofit getRetrofit() {
         return new Retrofit.Builder()
                 .baseUrl("http://tour-pedia.org/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
 
-    private TourDataApi getApi(){
+    private TourDataApi getApi() {
         return getRetrofit().create(TourDataApi.class);
     }
 }

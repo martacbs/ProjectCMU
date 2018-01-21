@@ -24,9 +24,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by martasantos on 17/01/18.
+ * Classe onde é mostado em mapa as atrações na cidade de Londres
  */
-
 public class MapasLondresAttractions extends AppCompatActivity implements OnMapReadyCallback {
 
     private SupportMapFragment mMapFragment;
@@ -36,16 +35,19 @@ public class MapasLondresAttractions extends AppCompatActivity implements OnMapR
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
 
+        //ao clicar na seta no canto superior esquerdo retorna para a atividade anterior
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mMapFragment.getMapAsync(this);
     }
 
+    /**
+     * Apresenta as atrações existentes na cidade de Londres
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
 
-        //zoomToLocationLondon();
         getApi().getListPointsOfInterest("London", "attraction", "Science")
                 .enqueue(new Callback<List<POI>>() {
                     @Override
@@ -63,7 +65,10 @@ public class MapasLondresAttractions extends AppCompatActivity implements OnMapR
 
     }
 
-
+    /**
+     * Adiciona no mapa os markers das atrações
+     * @param poi retorna as atracoes do local
+     */
     private void addMarkerLondonAttractions(List<POI> poi) {
 
         for (int i = 0; i < poi.size(); i++) {
@@ -82,25 +87,10 @@ public class MapasLondresAttractions extends AppCompatActivity implements OnMapR
             }
         });
     }
-    /*
-    private void addMarker(){
-        LatLng latLng=new LatLng(47.3668491,-8.1947272);
 
-        Marker marker=mGoogleMap.addMarker(new MarkerOptions()
-                .position(latLng)
-                .title("ESTG")
-                .snippet("Escola Superior de Tecnologia e Gestão"));
-
-        mGoogleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-
-                return true;
-            }
-        });
-
-    }*/
-
+    /**
+     * permite-nos mostrar no mapa a cidade de Londres de acordo com as coordenadas
+     */
     private void zoomToLocationLondonAttractions(){
         LatLng latLng=new LatLng(51.496715,-0.1757499);
 
@@ -111,6 +101,9 @@ public class MapasLondresAttractions extends AppCompatActivity implements OnMapR
 
     }
 
+    /**
+     * permite fazer o zoom do local
+     */
     private void zoomToLocation(){
         LatLng latLng=new LatLng(0,-0);
 
@@ -121,6 +114,9 @@ public class MapasLondresAttractions extends AppCompatActivity implements OnMapR
 
     }
 
+    /**
+     * API onde se vai buscar a informação para ser disponibilizada em mapas
+     */
     private Retrofit getRetrofit(){
         return new Retrofit.Builder()
                 .baseUrl("http://tour-pedia.org/api/")

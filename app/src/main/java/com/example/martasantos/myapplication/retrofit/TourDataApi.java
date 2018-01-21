@@ -9,7 +9,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 /**
- * Created by martasantos on 19/12/17.
+ *
+ * Interface da Tourpedia que nos permite obter a localização, categoria e nome
  */
 
 public interface TourDataApi {

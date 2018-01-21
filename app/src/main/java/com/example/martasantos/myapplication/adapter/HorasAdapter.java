@@ -57,13 +57,10 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         Context context= parent.getContext();
+
         LayoutInflater inflater= LayoutInflater.from(context);
-
         View contactView = inflater.inflate(R.layout.item_layout,parent,false);
-
         ViewHolder viewHolder =new ViewHolder(contactView);
-
-
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getmContext());
         eventoName = preferences.getString("nomeEvento", "");

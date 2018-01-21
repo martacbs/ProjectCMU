@@ -24,6 +24,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Classe onde é mostado em mapa os restaurantes na cidade de Londres
+ */
 public class MapasLondresRestaurants extends AppCompatActivity implements OnMapReadyCallback{
 
     private SupportMapFragment mMapFragment;
@@ -32,16 +35,19 @@ public class MapasLondresRestaurants extends AppCompatActivity implements OnMapR
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
+
+        //ao clicar na seta no canto superior esquerdo retorna para a atividade anterior
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mMapFragment.getMapAsync(this);
     }
 
+    /**
+     * Apresenta os restaurantes existentes na cidade de Londres
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
-
-        //zoomToLocationLondon();
         getApi().getListPointsOfInterest("London", "restaurant", "Restaurant")
                 .enqueue(new Callback<List<POI>>() {
                     @Override
@@ -50,7 +56,6 @@ public class MapasLondresRestaurants extends AppCompatActivity implements OnMapR
                         zoomToLocationLondonRestaurants();
                         addMarkerLondonRestaurants(points);
                     }
-
                     @Override
                     public void onFailure(Call<List<POI>> call, Throwable t) {
                     }
@@ -59,7 +64,10 @@ public class MapasLondresRestaurants extends AppCompatActivity implements OnMapR
 
     }
 
-
+    /**
+     * Adiciona no mapa os markers dos restaurantes
+     * @param poi retorna os restaurantes do local
+     */
     private void addMarkerLondonRestaurants(List<POI> poi) {
 
         for (int i = 0; i < poi.size(); i++) {
@@ -79,7 +87,9 @@ public class MapasLondresRestaurants extends AppCompatActivity implements OnMapR
         });
     }
 
-
+    /**
+     * permite-nos mostrar no mapa a cidade de Londres de acordo com as coordenadas
+     */
     private void zoomToLocationLondonRestaurants(){
         LatLng latLng=new LatLng(51.496715,-0.1757499);
 
@@ -90,6 +100,9 @@ public class MapasLondresRestaurants extends AppCompatActivity implements OnMapR
 
     }
 
+    /**
+     * permite fazer o zoom do local
+     */
     private void zoomToLocation(){
         LatLng latLng=new LatLng(0,-0);
 
@@ -100,6 +113,9 @@ public class MapasLondresRestaurants extends AppCompatActivity implements OnMapR
 
     }
 
+    /**
+     * API onde se vai buscar a informação para ser disponibilizada em mapas
+     */
     private Retrofit getRetrofit(){
         return new Retrofit.Builder()
                 .baseUrl("http://tour-pedia.org/api/")

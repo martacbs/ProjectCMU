@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.widget.CalendarView;
 
 import com.example.martasantos.myapplication.fragments.Calendar;
-import com.example.martasantos.myapplication.fragments.Sugestions;
 import com.example.martasantos.myapplication.fragments.About;
 import com.example.martasantos.myapplication.interests.Interesses;
 
@@ -72,7 +71,7 @@ public class Menu_Lateral extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        //onde se clica para obter as sugestões
         if (id == R.id.action_settings) {
             Intent interesses=new Intent(getApplicationContext(), Interesses.class);
             startActivity(interesses);
@@ -81,6 +80,8 @@ public class Menu_Lateral extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -91,6 +92,7 @@ public class Menu_Lateral extends AppCompatActivity
         android.support.v4.app.FragmentManager fm=getSupportFragmentManager();
         android.support.v4.app.Fragment x= fm.findFragmentById(R.id.content_MENU);
 
+        //onde se seleciona no menu lateral as opções que se quer
         if (id == R.id.nav_calendar) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_MENU, new Calendar()).commit();

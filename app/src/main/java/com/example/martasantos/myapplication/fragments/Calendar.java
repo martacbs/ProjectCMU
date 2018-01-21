@@ -15,14 +15,13 @@ import com.example.martasantos.myapplication.HorasL;
 import com.example.martasantos.myapplication.R;
 
 /**
- * Created by martasantos on 18/01/18.
+ * Classe onde é apresentado o calendário
  */
 
 public class Calendar extends Fragment {
 
     CalendarView calendarView;
     SharedPreferences sharedPreferences;
-
 
     @Nullable
     @Override
@@ -31,11 +30,11 @@ public class Calendar extends Fragment {
         View myView = inflater.inflate(R.layout.calendar, container, false);
         //return super.onCreateView(inflater, container, savedInstanceState);
         calendarView = (CalendarView) myView.findViewById(R.id.calendarView);
-
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int i, int i1, int i2) {
 
+                //onde é enviado o dia, mes e ano para ser obtido no CriarEvento
                 sharedPreferences = getActivity().getSharedPreferences("Data", Context.MODE_PRIVATE);
                 SharedPreferences.Editor mEditor = sharedPreferences.edit();
                 mEditor.putInt("mes", i);
@@ -45,14 +44,15 @@ public class Calendar extends Fragment {
 
                 goToHoras();
 
-
             }
         });
-                return myView;
+        return myView;
     }
 
-    public void goToHoras()
-    {
+    /**
+     * Reencaminha o calendário para a próxima atividade
+     */
+    public void goToHoras() {
         Intent intent = new Intent(getActivity().getApplication(), HorasL.class);
         startActivity(intent);
     }

@@ -5,15 +5,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by martasantos on 31/12/17.
+ * Trabalho elaborado no âmbito da disciplina de CMU
+ * <p>
+ * Marta Santos e Rafael Vieira
+ * <p>
+ * Base de dados, com as tabelas Utilizador, interesses e Eventos
  */
 
 public class DbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "user.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_USER="user";
-    private static final String TABLE_INTERESTS="interests";
-    private static final String TABLE_EVENTS="events";
+    private static final String TABLE_USER = "user";
+    private static final String TABLE_INTERESTS = "interests";
+    private static final String TABLE_EVENTS = "events";
 
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -32,9 +36,5 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("drop database;");
         onCreate(db);
     }
-
-
-
-
 
 }

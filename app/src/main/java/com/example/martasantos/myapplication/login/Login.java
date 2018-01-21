@@ -26,6 +26,10 @@ import com.example.martasantos.myapplication.register.UserRegister;
 
 import java.util.HashMap;
 
+/**
+ * Classe onde o utilizador efetua o login
+ */
+
 public class Login extends AppCompatActivity {
 
     Button login;
@@ -38,8 +42,9 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
+        //ao clicar na seta no canto superior esquerdo retorna para a atividade anterior
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         login = (Button) findViewById(R.id.buttonLogin);
         user = (EditText) findViewById(R.id.insertUser);
         pass = (EditText) findViewById(R.id.insertPass);
@@ -52,22 +57,19 @@ public class Login extends AppCompatActivity {
                 values.put("username", user.getText().toString());
                 values.put("password", pass.getText().toString());
 
-
-
+                //verifica se o utilizador existe
                 User user = verificarUser();
-                    if (user != null) {
+                if (user != null) {
 
-                        ProcessData p= new ProcessData();
-                        p.execute(6000000, null);
+                    ProcessData p = new ProcessData();
+                    p.execute(6000000, null);
 
+                    Intent d = new Intent(getApplicationContext(), Menu_Lateral.class);
+                    startActivity(d);
 
-
-                        Intent d = new Intent(getApplicationContext(), Menu_Lateral.class);
-                        startActivity(d);
-
-                    }else{
-                        Toast.makeText(Login.this, "Os dados introduzidos não são válidos", Toast.LENGTH_LONG).show();
-                    }
+                } else {
+                    Toast.makeText(Login.this, "Os dados introduzidos não são válidos", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -75,7 +77,9 @@ public class Login extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Verifica se o utilizador já está registado na base de dados, se este estiver é retornado o User
+     */
 
     private User verificarUser() {
         DbHelper dbHelper = new DbHelper(Login.this);
@@ -83,7 +87,7 @@ public class Login extends AppCompatActivity {
         String username = user.getText().toString();
         String password = pass.getText().toString();
         String query = "SELECT * FROM user WHERE username=? AND password=? ";
-        Cursor c = db.rawQuery(query, new String[]{username,password});
+        Cursor c = db.rawQuery(query, new String[]{username, password});
         User user = null;
         try {
             if (c != null && c.moveToFirst()) {
@@ -93,8 +97,8 @@ public class Login extends AppCompatActivity {
                 user.setPassword(c.getString(6));
             }
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "NAO DA", Toast.LENGTH_SHORT).show();
-        }finally {
+            Toast.makeText(getApplicationContext(), "O utilizador não existe", Toast.LENGTH_SHORT).show();
+        } finally {
             if (c != null) {
                 c.close();
             }
@@ -103,9 +107,14 @@ public class Login extends AppCompatActivity {
         return user;
     }
 
-    public class ProcessData extends AsyncTask<Integer,String,String >{
+
+    /**
+     * AsyncTask para efetuar a progress bar quando o utilizador faz login
+     */
+    public class ProcessData extends AsyncTask<Integer, String, String> {
 
         private ProgressDialog mProgressBar;
+
         @Override
         protected String doInBackground(Integer... integers) {
 
@@ -121,7 +130,7 @@ public class Login extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-           // mProgressBar.dismiss();
+            // mProgressBar.dismiss();
         }
 
         @Override

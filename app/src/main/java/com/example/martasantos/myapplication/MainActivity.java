@@ -40,14 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private GoogleApiClient googleApiClient;
     private static final int REQ_CODE = 9001;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         register=(Button)findViewById(R.id.bRegister);
         login=(Button)findViewById(R.id.bLogin);
@@ -70,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
-
+        //LOGIN através da conta Google
         SignIn = (SignInButton)findViewById(R.id.bt_login);
         SignIn.setOnClickListener(this);
         GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
@@ -79,8 +75,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
-    //Google
     @Override
     public void onClick(View v) {
 
@@ -102,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivityForResult(intent, REQ_CODE);
 
     }
+
+
     private void handleResult(GoogleSignInResult result) throws Exception {
 
         if (result.isSuccess()){
@@ -111,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             SQLiteDatabase db= dbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
 
+            //grava o nome e email do utilizador na base de dados
             values.put("name", account.getDisplayName().toString());
             values.put("email", account.getEmail().toString());
 
@@ -118,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (id_countGoogle < 0) {
                 throw new Exception("Não é possível registar o utilizador com o login da google");
             }
-
             updateUI(true, id_countGoogle);
         }
         else{
@@ -130,20 +126,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void updateUI(boolean isLogin, long id_google){
 
         if (isLogin) {
-
             Toast.makeText(getApplicationContext(), "Login with google sucessful", Toast.LENGTH_SHORT).show();
-
-
             Intent z = new Intent(getApplicationContext(), UserInterests.class);
-
             Bundle b = new Bundle();
             b.putLong("user_id_google", id_google);
             z.putExtras(b);
             startActivity(z);
-        }
 
-        else {
-
+        }else {
             SignIn.setVisibility(View.VISIBLE);
         }
 
@@ -151,8 +141,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        //google
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==REQ_CODE){
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
@@ -163,7 +151,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
-
-
 }
 

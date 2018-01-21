@@ -19,7 +19,8 @@ import com.example.martasantos.myapplication.models.Horas;
 import java.util.ArrayList;
 
 /**
- * Created by martasantos on 31/12/17.
+ *
+ *
  */
 
 public class HorasL extends AppCompatActivity {
@@ -37,6 +38,7 @@ public class HorasL extends AppCompatActivity {
         this.eventos = new ArrayList<>();
         reloadEventList(eventos);
 
+        //ao clicar na seta no canto superior esquerdo retorna para a atividade anterior
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         RecyclerView rvHoras =(RecyclerView) findViewById(R.id.rvHoras);
 
@@ -45,7 +47,6 @@ public class HorasL extends AppCompatActivity {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         nome = sharedPreferences.getString("nome", "");
-
 
         HorasAdapter adapter = new HorasAdapter(this, horas, eventos);
         adapter.notifyDataSetChanged();
@@ -72,8 +73,6 @@ public class HorasL extends AppCompatActivity {
         }
         return horas;
     }
-
-
 
 
     public void reloadEventList(  ArrayList<Evento> eventos ) {
