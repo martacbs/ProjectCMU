@@ -119,7 +119,7 @@ public class UserInterests extends AppCompatActivity {
         CheckBox moda = (CheckBox) findViewById(R.id.moda);
         CheckBox musica = (CheckBox) findViewById(R.id.musica);
         CheckBox escrita = (CheckBox) findViewById(R.id.escrita);
-        CheckBox cinema = (CheckBox) findViewById(R.id.cinema);
+        CheckBox atracoes = (CheckBox) findViewById(R.id.atracoes);
         CheckBox gastronomia = (CheckBox) findViewById(R.id.gastronomia);
 
         if (tecnologia.isChecked()) {
@@ -139,8 +139,8 @@ public class UserInterests extends AppCompatActivity {
         if (escrita.isChecked()) {
             interesses.add("Escrita");
         }
-        if (cinema.isChecked()) {
-            interesses.add("Cinema");
+        if (atracoes.isChecked()) {
+            interesses.add("Atrações");
         }
         if (gastronomia.isChecked()) {
             interesses.add("Gastronomia");
