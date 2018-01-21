@@ -48,7 +48,7 @@ public class MapasParisRestaurants extends AppCompatActivity implements OnMapRea
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
-
+        zoomToLocationParisRestaurants();
         getApi().getListPointsOfInterest("Paris", "restaurant", "Restaurant")
                 .enqueue(new Callback<List<POI>>(){
                     @Override

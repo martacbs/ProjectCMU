@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context="com.example.martasantos.myapplication.MainActivity">
 
 
@@ -13,13 +13,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="500dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="50dp"
-         android:layout_marginLeft="250dp"
-       android:src="@drawable/xagenda" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="500dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="250dp"
+            android:src="@drawable/xagenda" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -51,26 +51,26 @@
 
 
         <com.google.android.gms.common.SignInButton
-        android:id="@+id/bt_login"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="350dp"
-        android:layout_marginTop="10dp">
+            android:id="@+id/bt_login"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="350dp"
+            android:layout_marginTop="10dp">
         </com.google.android.gms.common.SignInButton>
 
 
 
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button"
-        android:layout_width="400dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="20dp"
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="400dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="20dp"
 
-        />
+            />
 
-</LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

@@ -10,9 +10,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="350dp"
-        android:layout_height="300dp"
-android:layout_marginLeft="120dp"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="120dp"
         android:layout_marginRight="50dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/x"/>
@@ -22,7 +22,7 @@ android:layout_marginLeft="120dp"
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp"
         android:text="Indique os seus interesses:"
         android:textSize="20dp"
@@ -77,10 +77,10 @@ android:layout_marginLeft="120dp"
         tools:layout_editor_absoluteY="322dp" />
 
     <CheckBox
-        android:id="@+id/cinema"
+        android:id="@+id/atracoes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cinema"
+        android:text="Atrações"
         android:layout_marginLeft="20dp"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="322dp" />
@@ -103,7 +103,7 @@ android:layout_marginLeft="120dp"
         android:layout_marginTop="16dp"
         android:clickable="true"
         android:padding="16dp"
-        android:text="Submeter"
+        android:text="submeter"
         android:textAllCaps="false"
         android:textColor="#000000"
         android:textSize="18sp" />

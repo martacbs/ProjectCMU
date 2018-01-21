@@ -47,6 +47,7 @@ public class MapasLondresAttractions extends AppCompatActivity implements OnMapR
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
+        zoomToLocationLondonAttractions();
 
         getApi().getListPointsOfInterest("London", "attraction", "Science")
                 .enqueue(new Callback<List<POI>>() {

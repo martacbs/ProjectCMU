@@ -49,7 +49,7 @@ public class MapasRomaRestaurants extends AppCompatActivity implements OnMapRead
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
-
+        zoomToLocationRomaRestaurants();
         getApi().getListPointsOfInterest("Rome", "restaurant", "Restaurant")
                 .enqueue(new Callback<List<POI>>() {
                     @Override

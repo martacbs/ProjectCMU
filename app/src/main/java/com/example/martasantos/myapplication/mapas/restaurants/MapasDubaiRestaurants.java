@@ -48,6 +48,7 @@ public class MapasDubaiRestaurants extends AppCompatActivity implements OnMapRea
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
+        zoomToLocationDubaiRestaurants();
         getApi().getListPointsOfInterest("Dubai", "restaurant", "Restaurant")
                 .enqueue(new Callback<List<POI>>(){
                     @Override

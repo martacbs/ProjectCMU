@@ -21,23 +21,25 @@
 
     <Spinner
         android:id="@+id/spinnerCidades"
-        android:layout_width="360dp"
+        android:layout_width="345dp"
         android:layout_height="45dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="20dp"
-        tools:layout_editor_absoluteX="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="59dp"
         />
 
-        <Button
-            android:id="@+id/botaoCidades"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mostrar Atrações da cidade"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            tools:layout_editor_absoluteX="63dp"
-            tools:layout_editor_absoluteY="187dp" />
+    <Button
+        android:id="@+id/botaoCidades"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mostrar Atrações da cidade"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="187dp" />
 
 
 

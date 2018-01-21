@@ -47,6 +47,7 @@ public class MapasBarcelonaRestaurants extends AppCompatActivity implements OnMa
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
+        zoomToLocationBarcelonaRestaurants();
         getApi().getListPointsOfInterest("Barcelona", "restaurant", "Restaurant")
                 .enqueue(new Callback<List<POI>>(){
                     @Override

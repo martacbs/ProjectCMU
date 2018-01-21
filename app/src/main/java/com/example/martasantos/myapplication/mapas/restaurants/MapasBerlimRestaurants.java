@@ -47,7 +47,7 @@ public class MapasBerlimRestaurants extends AppCompatActivity implements OnMapRe
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
-
+        zoomToLocationBerlimRestaurants();
         getApi().getListPointsOfInterest("Berlin", "restaurant", "Restaurant")
                 .enqueue(new Callback<List<POI>>(){
                     @Override

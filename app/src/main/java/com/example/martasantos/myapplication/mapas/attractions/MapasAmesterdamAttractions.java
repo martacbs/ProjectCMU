@@ -48,6 +48,7 @@ public class MapasAmesterdamAttractions extends AppCompatActivity implements OnM
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
+        zoomToLocationAmsterdamAttractions();
         getApi().getListPointsOfInterest("Amsterdam", "attraction", "science")
                 .enqueue(new Callback<List<POI>>(){
                     @Override

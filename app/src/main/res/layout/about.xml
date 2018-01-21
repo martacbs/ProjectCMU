@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="500dp"
-        android:layout_height="300dp"
+        android:layout_width="260dp"
+        android:layout_height="200dp"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
@@ -19,47 +19,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="80dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp">
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="7dp">
 
 
-    <Button
-        android:id="@+id/botaoChamada"
-        android:layout_width="250dp"
-        android:layout_height="80dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="50dp"
-        android:text="Contacte-nos"
-        android:textSize="15dp"
-        />
+        <Button
+            android:id="@+id/botaoChamada"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="7dp"
 
-    <Button
-        android:id="@+id/botaoEmail"
-        android:layout_width="250dp"
-        android:layout_height="80dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginTop="50dp"
-        android:text="Envie-nos um email"
-        android:textSize="15dp"
-        />
+            android:text="Contacte-nos"
+            />
+
+        <Button
+            android:id="@+id/botaoEmail"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="2dp"
+
+            android:text="Envie-nos um email"
+            />
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/visita"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
-        android:text="Visite-nos:"
-        android:textSize="30dp" />
+        android:text="Visite-nos:" />
 
     <ImageView
         android:id="@+id/mapaFelgueiras"
-        android:layout_width="500dp"
-        android:layout_height="190dp"
+        android:layout_width="250dp"
+        android:layout_height="125dp"
         android:layout_marginLeft="60dp"
         android:layout_marginBottom="20dp"
         android:src="@drawable/mapafelgueiras" />
