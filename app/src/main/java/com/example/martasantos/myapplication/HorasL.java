@@ -93,7 +93,6 @@ public class HorasL extends AppCompatActivity {
                 p.setData(c.getString(3));
                 p.setComeca(c.getString(4));
                 p.setDuracao(c.getString(5));
-                p.setLembrete(c.getString(6));
                 eventos.add(p);
             } while (c.moveToNext());
         }

@@ -10,7 +10,6 @@ public class Evento {
     private int id;
     private String local;
     private String duracao;
-    private String lembrete;
     private String data;
 
     public String getNome() {
@@ -62,17 +61,8 @@ public class Evento {
         this.duracao = duracao;
     }
 
-    public String getLembrete() {
-        return lembrete;
-    }
 
-    public void setLembrete(String lembrete) {
-        this.lembrete = lembrete;
-    }
-
-
-
-    public Evento(String nome, String data, String comeca, int id, String local, String duracao, String lembrete) {
+    public Evento(String nome, String data, String comeca, int id, String local, String duracao) {
 
         this.nome = nome;
         this.data = data;
@@ -80,7 +70,7 @@ public class Evento {
         this.id = id;
         this.local = local;
         this.duracao = duracao;
-        this.lembrete = lembrete;
+
     }
     public Evento(){
 

@@ -4,55 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context="com.example.martasantos.myapplication.login.Login">
 
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
-   <ImageView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="260dp"
-        android:layout_height="200dp"
-        android:layout_margin="60dp"
-        android:layout_marginRight="50dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginTop="75dp"
         android:src="@drawable/x" />
 
-
-<EditText
+    <EditText
         android:id="@+id/insertUser"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="375dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/insertPass"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginLeft="375dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword" />
 
+
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="320dp"
         android:text="Login"
         android:textSize="18sp"
         android:layout_marginTop="16dp"
         android:clickable="true"
         android:padding="16dp"
         android:textAllCaps="false"
-        />
+        /></LinearLayout>
     </ScrollView>
 </LinearLayout>

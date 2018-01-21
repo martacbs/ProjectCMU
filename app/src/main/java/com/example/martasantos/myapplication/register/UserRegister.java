@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.martasantos.myapplication.R;
 import com.example.martasantos.myapplication.database.DbHelper;
+import com.example.martasantos.myapplication.fragments.Calendar;
 import com.example.martasantos.myapplication.interests.UserInterests;
 import com.example.martasantos.myapplication.login.Login;
 import com.example.martasantos.myapplication.models.User;

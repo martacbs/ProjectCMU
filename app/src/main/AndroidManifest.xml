@@ -64,7 +64,7 @@
             android:name=".Menu_Lateral"
             android:label="@string/title_activity_menu__lateral"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Sugestoes"></activity>
+
     </application>
 
 </manifest>

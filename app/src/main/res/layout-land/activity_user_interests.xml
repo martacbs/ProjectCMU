@@ -4,26 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context="com.example.martasantos.myapplication.interests.UserInterests">
 
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
+        <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="120dp"
+        android:layout_width="260dp"
         android:layout_height="100dp"
-android:layout_marginLeft="120dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginLeft="400dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/x"/>
-
+        android:src="@drawable/x" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="350dp"
         android:text="Indique os seus interesses:"
         android:textSize="20dp"
         tools:layout_editor_absoluteX="30dp"
@@ -34,7 +40,7 @@ android:layout_marginLeft="120dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tecnologia"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="400dp"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="92dp"
 
@@ -45,7 +51,7 @@ android:layout_marginLeft="120dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Desporto"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="400dp"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="151dp" />
 
@@ -54,7 +60,7 @@ android:layout_marginLeft="120dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Moda"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="400dp"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="211dp" />
 
@@ -63,7 +69,7 @@ android:layout_marginLeft="120dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Música"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="400dp"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="267dp" />
 
@@ -72,7 +78,7 @@ android:layout_marginLeft="120dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Literatura"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="400dp"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="322dp" />
 
@@ -81,7 +87,7 @@ android:layout_marginLeft="120dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cinema"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="400dp"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="322dp" />
 
@@ -90,16 +96,15 @@ android:layout_marginLeft="120dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Gastronomia"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="400dp"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="322dp" />
 
     <Button
         android:id="@+id/submeter"
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="320dp"
         android:layout_marginTop="16dp"
         android:clickable="true"
         android:padding="16dp"
@@ -107,6 +112,9 @@ android:layout_marginLeft="120dp"
         android:textAllCaps="false"
         android:textColor="#000000"
         android:textSize="18sp" />
+</LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>
 

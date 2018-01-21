@@ -4,27 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context="com.example.martasantos.myapplication.evento.CriarEvento">
 
 
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="260dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="400dp"
+                android:layout_marginTop="75dp"
+                android:src="@drawable/x" />
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="400dp"
+        android:textSize="30dp"
         android:text="CRIAR EVENTO"
         tools:layout_editor_absoluteX="162dp"
         tools:layout_editor_absoluteY="222dp" />
 
     <EditText
         android:id="@+id/nomeEvento"
-        android:layout_width="match_parent"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Nome"
@@ -33,10 +49,9 @@
 
     <EditText
         android:id="@+id/localEvento"
-        android:layout_width="match_parent"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginLeft="400dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Local"
@@ -45,10 +60,9 @@
 
     <EditText
         android:id="@+id/dataEvento"
-        android:layout_width="match_parent"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginLeft="400dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="DataEvento"
@@ -57,26 +71,21 @@
 
     <EditText
         android:id="@+id/comeca"
-        android:layout_width="match_parent"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginLeft="400dp"
         android:hint="Selecione a hora"
-
         android:ems="10"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="127dp"
-
-
-         />
+        />
 
 
     <EditText
         android:id="@+id/duracao"
-        android:layout_width="match_parent"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginLeft="400dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Duração"
@@ -86,10 +95,9 @@
 
     <Button
         android:id="@+id/buttonCriarEvento"
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="325dp"
         android:layout_marginTop="16dp"
         android:clickable="true"
         android:padding="16dp"
@@ -97,4 +105,7 @@
         android:textAllCaps="false"
         android:textColor="#000000"
         android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

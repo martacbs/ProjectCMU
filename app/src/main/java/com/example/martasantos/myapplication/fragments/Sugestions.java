@@ -26,6 +26,7 @@ public class Sugestions extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-
-
-    }}
+        View myView = inflater.inflate(R.layout.calendar, container, false);
+return myView;
+    }
+}

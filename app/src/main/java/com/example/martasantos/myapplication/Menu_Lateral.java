@@ -88,13 +88,10 @@ public class Menu_Lateral extends AppCompatActivity
         android.support.v4.app.FragmentManager fm=getSupportFragmentManager();
         android.support.v4.app.Fragment x= fm.findFragmentById(R.id.content_MENU);
 
-        if (id == R.id.nav_first_layout) {
+        if (id == R.id.nav_calendar) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_MENU, new Calendar()).commit();
-        } else if (id == R.id.nav_second_layout) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_MENU, new Sugestions()).commit();
-        } else if (id == R.id.nav_third_layout) {
+        } else if (id == R.id.nav_about) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_MENU, new About()).commit();
         }
