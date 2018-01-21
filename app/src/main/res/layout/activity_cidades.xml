@@ -7,19 +7,39 @@
     android:orientation="vertical"
     tools:context="com.example.martasantos.myapplication.interests.Cidades">
 
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_marginTop="20dp"
+        android:layout_width="260dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/atracoes" />
+
+
     <Spinner
         android:id="@+id/spinnerCidades"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_width="368dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="59dp"
+        />
 
-    <Button
-        android:id="@+id/botaoCidades"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="187dp" />
+        <Button
+            android:id="@+id/botaoCidades"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mostrar Atrações da cidade"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            tools:layout_editor_absoluteX="63dp"
+            tools:layout_editor_absoluteY="187dp" />
+
+
 
 
 </LinearLayout>

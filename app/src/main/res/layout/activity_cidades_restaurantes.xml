@@ -7,18 +7,33 @@
     android:orientation="vertical"
     tools:context="com.example.martasantos.myapplication.interests.CidadesRestaurantes">
 
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_marginTop="20dp"
+        android:layout_width="260dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/restaurants" />
+
     <Spinner
         android:id="@+id/spinnerRestaurantes"
         android:layout_width="368dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="59dp" />
+        tools:layout_editor_absoluteY="59dp"
+         />
 
     <Button
         android:id="@+id/botaoRestaurantes"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Mostrar Restaurantes da Cidade"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         tools:layout_editor_absoluteX="63dp"
         tools:layout_editor_absoluteY="187dp" />
 </LinearLayout>

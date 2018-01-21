@@ -34,17 +34,12 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener{
 
-//private LinearLayout Image_Section;
+
     Button register,login;
     private SignInButton SignIn;
     private GoogleApiClient googleApiClient;
     private static final int REQ_CODE = 9001;
 
-
-    //facebook
-    LoginButton loginButton;
-    TextView textView;
-    CallbackManager callbackManager;
 
 
     @Override
@@ -82,39 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         googleApiClient =  new GoogleApiClient.Builder(this).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions).build();
 
 
-
-        //Facebook
-        FacebookSdk.sdkInitialize(getApplicationContext());
-
-        loginButton =(LoginButton)findViewById(R.id.login_button);
-        textView = (TextView)findViewById(R.id.textView);
-        callbackManager = CallbackManager.Factory.create();
-
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Intent q = new Intent(getApplicationContext(), UserInterests.class);
-                startActivity(q);
-                textView.setText("Login Sucess \n" + loginResult.getAccessToken().getUserId()+ "\n"+loginResult.getAccessToken());
-
-            }
-
-            @Override
-            public void onCancel() {
-
-                textView.setText("Login Cancelled");
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-
-            }
-        });
-
-
     }
-
-
 
 
     //Google
@@ -188,8 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //face
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+
         //google
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==REQ_CODE){
